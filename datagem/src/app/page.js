@@ -52,13 +52,7 @@ export default function Home() {
               -&gt;
             </span>
           </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. A nam enim
-            nihil laboriosam, expedita numquam. In veritatis quia quos
-            consequatur totam dicta tempore? Repellendus minus neque maiores
-            ducimus nemo ex obcaecati suscipit repellat sint soluta, blanditiis
-            recusandae voluptatem quisquam dolorum!
-          </p>
+          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>Nextjs</p>
         </a>
 
         <a
