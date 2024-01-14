@@ -23,17 +23,17 @@ export default function Page() {
           <div className="h-5 w-5 bg-gray-200 rounded-full"></div>
         </div>
         <div className="col">
-          <div className="h-5 w-5 bg-pink-600 rounded-full"></div>
+          <div className="h-5 w-5 bg-gray-200 rounded-full"></div>
         </div>
         <div className="col">
-          <div className="h-5 w-5 bg-gray-200 rounded-full"></div>
+          <div className="h-5 w-5 bg-pink-600 rounded-full"></div>
         </div>
       </div>
       <form>
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12">
             <h1 className="text-base font-semibold leading-8 text-gray-200">
-              Sign Up - step 2
+              Sign Up - step 3
             </h1>
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -97,7 +97,7 @@ export default function Page() {
 
           <div className="border-b border-gray-900/10 pb-12">
             <h2 className="text-base font-semibold leading-7 text-gray-200">
-              Which supplier data would you like to request?
+              Which companies would you like to authorize to view your data?
             </h2>
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-10">
@@ -290,13 +290,13 @@ export default function Page() {
 
         <div className="mt-6 flex items-center justify-end gap-x-6">
           <Link
-            href="/signup/1"
+            href="/signup/2"
             className="text-sm font-semibold leading-6 text-gray-200"
           >
             Back
           </Link>
           <Link
-            href="/signup/3"
+            href="/signup/overview"
             className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Next step
