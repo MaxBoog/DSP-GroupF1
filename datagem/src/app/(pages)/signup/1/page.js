@@ -1,8 +1,17 @@
-import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
-
 export default function Page() {
   return (
-    <section className="flex flex-1 flex-col px-6 py-12 lg:px-8 bg-indigo-950 items-center h-screen">
+    <>
+      <div className="grid grid-cols-3 w-36 justify-between">
+        <div className="col">
+          <div className="h-5 w-5 bg-pink-600 rounded-full"></div>
+        </div>
+        <div className="col">
+          <div className="h-5 w-5 bg-gray-200 rounded-full"></div>
+        </div>
+        <div className="col">
+          <div className="h-5 w-5 bg-gray-200 rounded-full"></div>
+        </div>
+      </div>
       <form>
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12">
@@ -418,6 +427,6 @@ export default function Page() {
           </button>
         </div>
       </form>
-    </section>
+    </>
   );
 }

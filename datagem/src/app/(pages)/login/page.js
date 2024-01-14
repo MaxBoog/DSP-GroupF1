@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 // components
 
@@ -81,12 +82,14 @@ export default function Page() {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a DataGem member yet?{" "}
-            <a
-              href="#"
-              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+            <Link
+              href="/signup/1"
+              className="font-semibold leading-6 text-indigo-600
+              hover:text-indigo-500"
             >
+              {" "}
               Sign Up
-            </a>
+            </Link>
           </p>
         </div>
       </div>
