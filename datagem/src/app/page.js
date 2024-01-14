@@ -1,6 +1,7 @@
 // imports
 
 import Image from "next/image";
+import Link from "next/link";
 
 // components
 
@@ -47,18 +48,18 @@ export default function Home() {
                 suppliers and clients.
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
-                <a
-                  href="#"
+                <Link
+                  href="/signup"
                   className="rounded-md bg-indigo-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Get started
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  href="/login"
                   className="text-sm font-semibold leading-6 text-gray-200"
                 >
                   Log in <span aria-hidden="true">→</span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
