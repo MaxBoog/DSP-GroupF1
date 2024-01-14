@@ -7,10 +7,10 @@ export default function Page() {
     <>
       <div className="grid grid-cols-3 w-36 justify-between">
         <div className="col">
-          <div className="h-5 w-5 bg-pink-600 rounded-full"></div>
+          <div className="h-5 w-5 bg-gray-200 rounded-full"></div>
         </div>
         <div className="col">
-          <div className="h-5 w-5 bg-gray-200 rounded-full"></div>
+          <div className="h-5 w-5 bg-pink-600 rounded-full"></div>
         </div>
         <div className="col">
           <div className="h-5 w-5 bg-gray-200 rounded-full"></div>
@@ -20,52 +20,10 @@ export default function Page() {
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12">
             <h1 className="text-base font-semibold leading-8 text-gray-200">
-              Sign Up - step 1
+              Sign Up - step 2
             </h1>
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              <div className="sm:col-span-4">
-                <label
-                  htmlFor="username"
-                  className="block text-sm font-medium leading-6 text-gray-200"
-                >
-                  Company Name
-                </label>
-                <div className="mt-2">
-                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md bg-gray-50">
-                    <input
-                      type="text"
-                      name="username"
-                      id="username"
-                      autoComplete="username"
-                      className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                      placeholder=""
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-span-full">
-                <label
-                  htmlFor="about"
-                  className="block text-sm font-medium leading-6 text-gray-200"
-                >
-                  About
-                </label>
-                <div className="mt-2">
-                  <textarea
-                    id="about"
-                    name="about"
-                    rows={3}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    defaultValue={""}
-                  />
-                </div>
-                <p className="mt-3 text-sm leading-6 text-gray-400">
-                  Provide a brief description of your company.
-                </p>
-              </div>
-
               {/* <div className="col-span-full">
                 <label
                   htmlFor="photo"
@@ -126,154 +84,65 @@ export default function Page() {
 
           <div className="border-b border-gray-900/10 pb-12">
             <h2 className="text-base font-semibold leading-7 text-gray-200">
-              Registration
+              Which supplier data would you like to request?
             </h2>
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="sm:col-span-3">
                 <label
-                  htmlFor="first-name"
+                  htmlFor="sector"
                   className="block text-sm font-medium leading-6 text-gray-200"
                 >
-                  First name
+                  Sector
                 </label>
                 <div className="mt-2">
-                  <input
-                    type="text"
-                    name="first-name"
-                    id="first-name"
-                    autoComplete="given-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
+                  <select
+                    id="sector"
+                    name="sector"
+                    autoComplete="sector-name"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                  >
+                    <option>Real estate</option>
+                    <option>Retail</option>
+                    <option>Manufacturing</option>
+                    <option>Construction</option>
+                    <option>Technology</option>
+                    <option>Healthcare</option>
+                    <option>Automobile industry</option>
+                    <option>Finance and insurance</option>
+                    <option>Petrochemical</option>
+                    <option>Transportation</option>
+                    <option>Energy industry</option>
+                  </select>
                 </div>
               </div>
 
               <div className="sm:col-span-3">
                 <label
-                  htmlFor="last-name"
-                  className="block text-sm font-medium leading-6 text-gray-300"
-                >
-                  Last name
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="text"
-                    name="last-name"
-                    id="last-name"
-                    autoComplete="family-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-4">
-                <label
-                  htmlFor="email"
+                  htmlFor="company"
                   className="block text-sm font-medium leading-6 text-gray-200"
                 >
-                  Email address
-                </label>
-                <div className="mt-2">
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-
-              {/* <div className="sm:col-span-3">
-                <label
-                  htmlFor="country"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  Country
+                  Company
                 </label>
                 <div className="mt-2">
                   <select
-                    id="country"
-                    name="country"
-                    autoComplete="country-name"
+                    id="company"
+                    name="company"
+                    autoComplete="company-name"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                   >
-                    <option>United States</option>
-                    <option>Canada</option>
-                    <option>Mexico</option>
+                    <option>Apple</option>
+                    <option>Siemens</option>
+                    <option>Ericsson</option>
+                    <option>Shell</option>
+                    <option>Tesla</option>
+                    <option>Amazon</option>
+                    <option>Visa</option>
+                    <option>Walmart</option>
+                    <option>Maersk</option>
+                    <option>Salesforce</option>
+                    <option>JPMorgan Chase</option>
                   </select>
-                </div>
-              </div> */}
-
-              <div className="col-span-full">
-                <label
-                  htmlFor="street-address"
-                  className="block text-sm font-medium leading-6 text-gray-300"
-                >
-                  Street address
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="text"
-                    name="street-address"
-                    id="street-address"
-                    autoComplete="street-address"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-2 sm:col-start-1">
-                <label
-                  htmlFor="city"
-                  className="block text-sm font-medium leading-6 text-gray-300"
-                >
-                  City
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="text"
-                    name="city"
-                    id="city"
-                    autoComplete="address-level2"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="postal-code"
-                  className="block text-sm font-medium leading-6 text-gray-300"
-                >
-                  Postal code
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="text"
-                    name="region"
-                    id="postal-code"
-                    autoComplete="address-level1"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="country"
-                  className="block text-sm font-medium leading-6 text-gray-300"
-                >
-                  Country
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="text"
-                    name="country"
-                    id="country"
-                    autoComplete="country"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
                 </div>
               </div>
             </div>
@@ -418,13 +287,13 @@ export default function Page() {
 
         <div className="mt-6 flex items-center justify-end gap-x-6">
           <Link
-            href="/"
+            href="/signup/1"
             className="text-sm font-semibold leading-6 text-gray-200"
           >
             Back
           </Link>
           <Link
-            href="/signup/2"
+            href="/signup/3"
             className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Next step
