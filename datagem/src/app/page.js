@@ -41,7 +41,7 @@ export default function Home() {
                   width={100}
                 />
               </h1>
-              <p className="mt-6 text-lg leading-8 text-gray-300">
+              <p className="mt-6 text-lg leading-8 text-gray-200">
                 Data to enrich your online business. Harness the power of
                 Linked-Data and seamlessly import and share your ESG data with
                 suppliers and clients.
@@ -76,6 +76,7 @@ export default function Home() {
           </div>
         </div>
       </header>
+      <section></section>
     </main>
   );
 }
