@@ -1,11 +1,12 @@
 import Image from "next/image";
 import DashboardCard from "@/app/ui/DashboardCard";
 import { Button } from "flowbite-react";
+import Link from "next/link";
 
 export default function Page() {
   return (
     <section className="bg-indigo-900">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-0.5 max-w-7xl mx-auto h-full w-ful text-gray-200">
+      <div className="grid grid-cols-1 lg:grid-cols-12 px-4 gap-0.5 max-w-7xl mx-auto h-full w-ful text-gray-200">
         <div className="col-span-6">
           <h1 className="my-2 text-xl ">Your Network</h1>
           <Image src="/graph.png" height={500} width={500} alt="Your network" />
@@ -28,7 +29,9 @@ export default function Page() {
                 <Button className="min-w-32">Deny</Button>
               </div>
               <div className="col-span-1">
-                <Button className="min-w-32">My Requests</Button>
+                <Link href="/my-requests">
+                  <Button className="min-w-32">My Requests</Button>
+                </Link>
               </div>
             </div>
           </DashboardCard>

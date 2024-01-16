@@ -18,7 +18,11 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 
 // components
 
-const navigation = [{ name: "home", href: "/", icon: HomeIcon }];
+const navigation = [
+  { name: "home", href: "/", icon: HomeIcon },
+  { name: "dashboard", href: "/dashboard" },
+  { name: "my requests", href: "/my-requests" },
+];
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
