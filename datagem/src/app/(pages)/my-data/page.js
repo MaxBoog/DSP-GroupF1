@@ -2,6 +2,7 @@
 
 import RequestCard from "@/app/ui/RequestCard";
 import { Button } from "flowbite-react";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -14,7 +15,11 @@ export default function Page() {
           </p>
         </div>
         <div className="col-span-1">
-          <Button className=" p-1.5 w-full bg-pink-700 my-3">Edit Data</Button>
+          <Link href="/my-data/edit-data">
+            <Button className=" p-1.5 justify-self-end bg-pink-700 my-3">
+              Edit Data
+            </Button>
+          </Link>
         </div>
         <div className="col col-span-4">
           <hr />
