@@ -22,6 +22,7 @@ const navigation = [
   { name: "home", href: "/", icon: HomeIcon },
   { name: "dashboard", href: "/dashboard" },
   { name: "my requests", href: "/my-requests" },
+  { name: "my data", href: "my-data" },
 ];
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
