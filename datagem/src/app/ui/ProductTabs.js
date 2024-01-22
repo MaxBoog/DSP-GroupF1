@@ -3,8 +3,10 @@
 // imports
 
 import { Button, Tabs } from "flowbite-react";
+import { PlusCircleIcon } from "@heroicons/react/24/outline";
 
 export default function ProductTabs() {
+  const Pluscircleicon = { icon: PlusCircleIcon };
   return (
     <>
       <Tabs aria-label="Tabs with icons" style="underline">
@@ -49,6 +51,7 @@ export default function ProductTabs() {
           <Button className="bg-pink-700 px-5 py-2 my-1">Edit</Button>
         </Tabs.Item>
       </Tabs>
+      <Button>+ Add product</Button>
     </>
   );
 }

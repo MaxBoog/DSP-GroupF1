@@ -20,9 +20,9 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 
 const navigation = [
   { name: "home", href: "/", icon: HomeIcon },
-  { name: "dashboard", href: "/dashboard" },
-  { name: "my requests", href: "/my-requests" },
-  { name: "my data", href: "/my-data" },
+  { name: "dashboard", href: "/dashboard", icon: HomeIcon },
+  { name: "my requests", href: "/my-requests", icon: HomeIcon },
+  { name: "my data", href: "/my-data", icon: HomeIcon },
 ];
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
