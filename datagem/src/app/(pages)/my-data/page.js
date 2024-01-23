@@ -4,11 +4,10 @@ import RequestCard from "@/app/ui/RequestCard";
 import { Button } from "flowbite-react";
 import Link from "next/link";
 
-
-import {getCompanies} from './query';
+import { getCompanies } from "./query";
 
 export default async function Page() {
-  const companies = await getCompanies('apple');
+  const companies = await getCompanies();
   console.log(companies);
 
   return (
@@ -27,16 +26,19 @@ export default async function Page() {
             </Button>
           </Link>
         </div>
-        
-        <div className="col col-span-4">
+
+        {/* <div className="col col-span-4">
           <hr />
-        </div>
-
-        
-
-
-        
-  
+          {companies.map(function ({ company }) {
+            <h1>{company.nameCompany.value}.</h1>;
+          })}
+        </div> */}
+        {/* {companies.map(({ company }) => (
+          <h1>{company.nameCompany.value}</h1>
+        ))} */}
+        {companies.map((company) => (
+          <div>{company.nameCompany.value}</div>
+        ))}
       </section>
     </>
   );
