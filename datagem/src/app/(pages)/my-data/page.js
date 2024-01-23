@@ -5,10 +5,10 @@ import { Button } from "flowbite-react";
 import Link from "next/link";
 
 
-import {getCompanies} from './query';
+import {getCompanies} from './insert_query';
 
 export default async function Page() {
-  const companies = await getCompanies('apple');
+  const companies = await getCompanies();
   console.log(companies);
 
   return (
@@ -27,6 +27,19 @@ export default async function Page() {
             </Button>
           </Link>
         </div>
+
+        
+
+
+        {/* website laad, voer meteen query uit (query_direct.js) om alle bedrijven in te laden in een dropdown menu
+        Dan heb je 2 drop down knoppen. 1 knop om het bedrijf te selecteren en 1 knop om het product te selecteren
+        je klikt op companyA en product1 en dan moet query_product die twee waardes ontvangen als parameter dus:
+        
+        import query_direct
+        getCompanies(CompanyA, product1)
+
+        
+        */}
         
         <div className="col col-span-4">
           <hr />

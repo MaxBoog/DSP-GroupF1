@@ -5,6 +5,7 @@ export async function getCompanies(input) {
     input = input.trim();
 
     const apiUrl = "http://localhost:7200/repositories/repo_niels";
+    
     if (!input) {
         throw new Error('Ingredient not defined');
     }
@@ -18,9 +19,11 @@ export async function getCompanies(input) {
     let new_query = `SELECT ?company ?nameCompany WHERE {?company a ${prefix}Company> . 
     ?company ${prefix}hasName> ?nameCompany}`
 
-    let encoded_query = encodeURI(new_query).replace(/#/g, '%23').replace(/</g, '%3C').replace(/>/g, '%3E').replace(/{/g, '%7B').replace(/}/g, '%7D')
-    
+    //let encoded_query = encodeURI(new_query).replace(/#/g, '%23').replace(/</g, '%3C')
+    //.replace(/>/g, '%3E').replace(/{/g, '%7B').replace(/}/g, '%7D')
 
+    let encoded_query = encodeURIComponent(new_query)
+    
     // opslaan werkende query let query = "SELECT%20*%20WHERE%20%7B%20?s%20?p%20%3Chttp://example.org/ontology%23Company%3E%20.%7D" ;
     //query = encodeURI(query).replace(/#/, '%23'); //deze lijn alleen bij fontology
 
