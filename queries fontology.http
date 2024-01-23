@@ -1,0 +1,2 @@
+
+GET http://localhost:7200/repositories/fontology1?query=SELECT ?s  WHERE { ?s <http://example.com/resource/recipes/ingredients> ?o .}
