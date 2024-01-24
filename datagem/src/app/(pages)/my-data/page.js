@@ -6,10 +6,32 @@ import Link from "next/link";
 import Form from "@/app/ui/Form";
 
 import { getCompanies } from "./insert_query";
+import { findInfo, findProduct, parseInfo } from "./Queries/findProduct";
+import { updateInfo } from "./Queries/UpdateInfo";
 
 export default async function Page() {
-  const companies = await getCompanies();
-  console.log(companies);
+  // const products = await findProduct();
+  // console.log(products);
+  // const productUris = products.map(item => item.product.value);
+  // const productNames = products.map(item => item.productName.value);
+
+  // const info = await findInfo();
+  
+  // // Output the results
+  // console.log(productUris);
+  // console.log(productNames);
+  // console.log(info)
+
+  const responseData = await findInfo();
+
+
+  const parsedData = await parseInfo(responseData)
+
+  
+  //  const update = await updateInfo()
+// Output the parsed information
+  console.log(parsedData);
+
 
   return (
     <>

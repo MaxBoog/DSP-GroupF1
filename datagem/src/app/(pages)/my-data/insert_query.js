@@ -1,13 +1,21 @@
 import axios from "axios";
 
 export async function getCompanies(my_company_name) {
-  const apiUrl = " http://localhost:7200/repositories/repo_niels/statements";
+  const apiUrl = " http://localhost:7200/repositories/DataGemDeluxe/statements";
   const my_name = "my_inserted_company"; // variable company
   const company_name = my_company_name;
 
-  const prefix = "<http://example.org/ontology";
+  const prefix = "<http://example.org/ontology#";
 
-  const new_query = `INSERT DATA {${prefix}#pietpaulusmarip> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/ontology#Company>}`;
+  // const new_query = `INSERT DATA {${prefix}jannsen> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/ontology#Company>}`;
+
+  const new_query= `PREFIX : <http://example.org/ontology#>
+
+                    DELETE WHERE {
+                      :CompanyNiels ?p ?o .
+                    }
+  
+                    `
 
   let encoded_query = encodeURIComponent(new_query);
   const url = `${apiUrl}?update=${encoded_query}`;
