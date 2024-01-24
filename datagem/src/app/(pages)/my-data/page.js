@@ -3,13 +3,9 @@
 import RequestCard from "@/app/ui/RequestCard";
 import { Button } from "flowbite-react";
 import Link from "next/link";
+import Form from "@/app/ui/Form";
 
-<<<<<<< HEAD
-import { getCompanies } from "./query";
-=======
-
-import {getCompanies} from './insert_query';
->>>>>>> 36c62cceaba2e04830545bb9c18588dcbaa78327
+import { getCompanies } from "./insert_query";
 
 export default async function Page() {
   const companies = await getCompanies();
@@ -31,11 +27,8 @@ export default async function Page() {
             </Button>
           </Link>
         </div>
-<<<<<<< HEAD
-=======
 
-        
-
+        <Form />
 
         {/* website laad, voer meteen query uit (query_direct.js) om alle bedrijven in te laden in een dropdown menu
         Dan heb je 2 drop down knoppen. 1 knop om het bedrijf te selecteren en 1 knop om het product te selecteren
@@ -46,11 +39,15 @@ export default async function Page() {
 
         
         */}
-        
+
         <div className="col col-span-4">
           <hr />
         </div>
->>>>>>> 36c62cceaba2e04830545bb9c18588dcbaa78327
+
+        <input
+          type="text"
+          className="form-input px-4 py-3 rounded text-gray-900"
+        />
 
         {/* <div className="col col-span-4">
           <hr />
@@ -61,9 +58,9 @@ export default async function Page() {
         {/* {companies.map(({ company }) => (
           <h1>{company.nameCompany.value}</h1>
         ))} */}
-        {companies.map((company) => (
+        {/* {companies.map((company) => (
           <div>{company.nameCompany.value}</div>
-        ))}
+        ))} */}
       </section>
     </>
   );
