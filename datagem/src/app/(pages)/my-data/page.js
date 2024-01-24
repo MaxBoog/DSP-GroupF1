@@ -28,6 +28,7 @@ export default async function Page() {
           </Link>
         </div>
 
+        {/* Input formulier */}
         <Form />
 
         {/* website laad, voer meteen query uit (query_direct.js) om alle bedrijven in te laden in een dropdown menu

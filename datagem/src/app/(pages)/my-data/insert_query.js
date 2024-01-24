@@ -4,6 +4,7 @@ export async function getCompanies(my_company_name) {
   const apiUrl = " http://localhost:7200/repositories/repo_niels/statements";
   const my_name = "my_inserted_company"; // variable company
   const company_name = my_company_name;
+  console.log(company_name);
 
   const prefix = "<http://example.org/ontology";
 
