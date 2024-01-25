@@ -2,15 +2,13 @@ import axios from "axios";
 
 export async function getCompanies(my_company_name) {
   const apiUrl = " http://localhost:7200/repositories/repo_niels/statements";
-  const my_name = "my_inserted_company"; // variable company
   const company_name = my_company_name;
-  console.log(company_name);
 
   const prefix = "<http://example.org/ontology";
 
-  const new_query = `INSERT DATA {${prefix}#pietpaulusmarip> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/ontology#Company>}`;
+  const new_company_query = `INSERT DATA {${prefix}#${company_name}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/ontology#Company>}`;
 
-  let encoded_query = encodeURIComponent(new_query);
+  let encoded_query = encodeURIComponent(new_company_query);
   const url = `${apiUrl}?update=${encoded_query}`;
 
   console.log(url);
@@ -19,9 +17,7 @@ export async function getCompanies(my_company_name) {
     "Content-Type": "application/sparql-update",
   };
 
-  const response = await axios.post(url, new_query, { headers });
-
-
+  const response = await axios.post(url, new_company_query, { headers });
   //console.log(response.data);  // Output the response data if needed
   // return response.data.results.bindings;
 }
