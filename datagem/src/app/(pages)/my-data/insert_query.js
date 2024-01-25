@@ -1,26 +1,61 @@
 import axios from "axios";
+import config from "./config";
 
-export async function getCompanies(my_company_name) {
-  const apiUrl = " http://localhost:7200/repositories/repo_niels/statements";
+const apiUrl = " http://localhost:7200/repositories/repo_niels/statements";
+const headers = {
+  "Content-Type": "application/sparql-update",
+};
+
+export async function insertCompanies(my_company_name) {
+  config.my_company_name = my_company_name;
+  console.log(
+    "----------------------------------------------- ",
+    config.my_company_name
+  );
+
   const company_name = my_company_name;
-
   const prefix = "<http://example.org/ontology";
 
-  const new_company_query = `INSERT DATA {${prefix}#${company_name}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/ontology#Company>}`;
-
+  //// company type ////
+  const new_company_query = `PREFIX : <http://example.org/ontology#> 
+  INSERT DATA { 
+    :${company_name} a :Company ;
+              :hasName "${company_name}" .
+  }`;
   let encoded_query = encodeURIComponent(new_company_query);
   const url = `${apiUrl}?update=${encoded_query}`;
-
-  console.log(url);
-
-  const headers = {
-    "Content-Type": "application/sparql-update",
-  };
-
   const response = await axios.post(url, new_company_query, { headers });
-  //console.log(response.data);  // Output the response data if needed
-  // return response.data.results.bindings;
 }
 
-// http://localhost:7200/repositories/repo_niels/statements?update=INSERT%20DATA%20%7B%3Chttp%3A%2F%2Fexample.org%2Fontology%23%23pietpaulusmarip%3E%20%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23type%3E%20%3Chttp%3A%2F%2Fexample.org%2Fontology%23Company%3E%7D
-// http://localhost:7200/repositories/repo_niels/statements?update=INSERT%20DATA%20%7B%3Chttp%3A%2F%2Fexample.org%2Fontology%23CompanyKerstman%3E%20%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23type%3E%20%3Chttp%3A%2F%2Fexample.org%2Fontology%23Company%3E%7D
+export async function addProduct(
+  productName,
+  emissions,
+  energyConsumption,
+  renewableEnergyUsage,
+  efficiency,
+  lifecycle
+) {
+  const new_query = `PREFIX : <http://example.org/ontology#> 
+                INSERT DATA{
+                  :${productName} a :Product ;
+                      :hasName "${productName}";
+                      :belongsToCompany: :${config.my_company_name} ;
+                      :hasProductInfo :${productName}Info .
+                  
+                      :${productName} a :${productName}Info;
+                      :emissions ${emissions} ;
+                      :energyConsumption  ${energyConsumption};
+                      :renewableEnergyUsage ${renewableEnergyUsage};
+                      :materialEfficiency "${efficiency}" ;
+                      :lifecycle "${lifecycle}".
+                  
+                    :${my_company_name} :hasProduct :${productName}.
+                    }
+                    `;
+
+  console.log(new_query);
+  let encoded_query = encodeURIComponent(new_query);
+  const url = `${apiUrl}?update=${encoded_query}`;
+
+  const response = await axios.post(url, new_query, { headers });
+}

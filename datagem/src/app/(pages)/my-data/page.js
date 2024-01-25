@@ -1,16 +1,18 @@
 // imports
 
+import React from "react";
+
 import RequestCard from "@/app/ui/RequestCard";
 import { Button } from "flowbite-react";
 import Link from "next/link";
 import Form from "@/app/ui/Form";
 
-import { getCompanies } from "./query_direct";
+import MyTable from "./table";
+import { getProducts } from "./query_product";
 
 export default async function Page() {
-  const companies = await getCompanies();
-  console.log(companies);
-
+  const products = await getProducts();
+  console.log(products);
   return (
     <>
       <section className="grid grid-cols-1 lg:grid-cols-4 px-4 gap-4 max-w-7xl mx-auto h-full w-ful text-gray-200">
@@ -30,47 +32,17 @@ export default async function Page() {
 
         {/* Input formulier */}
         <Form />
-
-        {/* website laad, voer meteen query uit (query_direct.js) om alle bedrijven in te laden in een dropdown menu
-        Dan heb je 2 drop down knoppen. 1 knop om het bedrijf te selecteren en 1 knop om het product te selecteren
-        je klikt op companyA en product1 en dan moet query_product die twee waardes ontvangen als parameter dus:
-        
-        import query_direct
-        getCompanies(CompanyA, product1)
-
-        
-        */}
-
+        <div className="col col-span-4">
+          <MyTable />
+        </div>
         <div className="col col-span-4">
           <hr />
         </div>
 
-        <input
+        {/* <input
           type="text"
           className="form-input px-4 py-3 rounded text-gray-900"
-        />
-
-
-        <div>
-        <table class="tg" id="myTable">
-			    <tr>
-				  <th class="tg-lboi">Companies</th>
-			    </tr>
-		    </table>
-        </div>
-
-        {/* <div className="col col-span-4">
-          <hr />
-          {companies.map(function ({ company }) {
-            <h1>{company.nameCompany.value}.</h1>;
-          })}
-        </div> */}
-        {/* {companies.map(({ company }) => (
-          <h1>{company.nameCompany.value}</h1>
-        ))} */}
-        {/* {companies.map((company) => (
-          <div>{company.nameCompany.value}</div>
-        ))} */}
+        /> */}
       </section>
     </>
   );

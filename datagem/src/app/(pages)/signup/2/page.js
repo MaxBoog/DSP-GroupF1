@@ -1,21 +1,54 @@
-// imports
 "use client";
 
+// imports
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Select from "react-select";
+import getAllCompanies from "../../my-data/get_all_companies";
+import AuthorizeButton from "@/app/ui/AuthorizeButton";
+
+const all_companies_fetch = async () => {
+  try {
+    const all_companies = await getAllCompanies();
+    const company_options = all_companies.map((company) => ({
+      value: company.companyName.value,
+      label: company.companyName.value,
+    }));
+    return company_options;
+    // Use company_options here
+  } catch (error) {
+    console.error("Error fetching companies:", error);
+  }
+};
 
 export default function Page() {
-  const options = [
-    { value: "Apple", label: "Apple" },
-    { value: "Tesla", label: "Tesla" },
-    { value: "Shell", label: "Shell" },
-    { value: "JPMorgan Chase", label: "JPMorgan Chase" },
-    { value: "Amazon", label: "Amazon" },
-    { value: "Visa", label: "Visa" },
-    { value: "Walmart", label: "Walmart" },
-    { value: "Microsoft", label: "Microsoft" },
-    { value: "Maersk", label: "Maersk" },
-  ];
+  // get list of companies
+  const [options, setOptions] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const companyOptions = await all_companies_fetch();
+        setOptions(companyOptions);
+      } catch (error) {
+        console.error("Error fetching companies:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // authorize list of companies
+  const [selectedOptions, setSelectedOptions] = useState([]);
+
+  const handleSelectChange = (auth_options) => {
+    setSelectedOptions(auth_options || []);
+  };
+
+  const selectedValues = selectedOptions.map((option) => option.value);
+  console.log(selectedValues);
+  console.log(selectedOptions);
+
   return (
     <>
       <div className="grid grid-cols-3 w-36 justify-between">
@@ -36,63 +69,7 @@ export default function Page() {
               Sign Up - step 2
             </h1>
 
-            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              {/* <div className="col-span-full">
-                <label
-                  htmlFor="photo"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  Photo
-                </label>
-                <div className="mt-2 flex items-center gap-x-3">
-                  <UserCircleIcon
-                    className="h-12 w-12 text-gray-300"
-                    aria-hidden="true"
-                  />
-                  <button
-                    type="button"
-                    className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                  >
-                    Change
-                  </button>
-                </div>
-              </div> */}
-
-              {/* <div className="col-span-full">
-                <label
-                  htmlFor="cover-photo"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  Cover photo
-                </label>
-                <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                  <div className="text-center">
-                    <PhotoIcon
-                      className="mx-auto h-12 w-12 text-gray-300"
-                      aria-hidden="true"
-                    />
-                    <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                      <label
-                        htmlFor="file-upload"
-                        className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-                      >
-                        <span>Upload a file</span>
-                        <input
-                          id="file-upload"
-                          name="file-upload"
-                          type="file"
-                          className="sr-only"
-                        />
-                      </label>
-                      <p className="pl-1">or drag and drop</p>
-                    </div>
-                    <p className="text-xs leading-5 text-gray-600">
-                      PNG, JPG, GIF up to 10MB
-                    </p>
-                  </div>
-                </div>
-              </div> */}
-            </div>
+            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6"></div>
           </div>
 
           <div className="border-b border-gray-900/10 pb-12">
@@ -101,35 +78,6 @@ export default function Page() {
             </h2>
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-10">
-              <div className="sm:col-span-4">
-                <label
-                  htmlFor="sector"
-                  className="block text-sm font-medium leading-6 text-gray-200"
-                >
-                  Sector
-                </label>
-                <div className="mt-2">
-                  <select
-                    id="sector"
-                    name="sector"
-                    autoComplete="sector-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                  >
-                    <option>Real estate</option>
-                    <option>Retail</option>
-                    <option>Manufacturing</option>
-                    <option>Construction</option>
-                    <option>Technology</option>
-                    <option>Healthcare</option>
-                    <option>Automobile industry</option>
-                    <option>Finance and insurance</option>
-                    <option>Petrochemical</option>
-                    <option>Transportation</option>
-                    <option>Energy industry</option>
-                  </select>
-                </div>
-              </div>
-
               <div className="sm:col-span-6">
                 <label
                   htmlFor="company"
@@ -145,147 +93,16 @@ export default function Page() {
                     className="block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                     classNamePrefix="select"
                     closeMenuOnSelect={false}
+                    onChange={handleSelectChange}
                   />
+
+                  {/* <AuthorizeButton
+                    selected_authorized={selectedOptions}
+                  ></AuthorizeButton> */}
                 </div>
               </div>
             </div>
           </div>
-
-          {/* <div className="border-b border-gray-900/10 pb-12">
-            <h2 className="text-base font-semibold leading-7 text-gray-900">
-              Notifications
-            </h2>
-            <p className="mt-1 text-sm leading-6 text-gray-600">
-              We'll always let you know about important changes, but you pick
-              what else you want to hear about.
-            </p>
-
-            <div className="mt-10 space-y-10">
-              <fieldset>
-                <legend className="text-sm font-semibold leading-6 text-gray-900">
-                  By Email
-                </legend>
-                <div className="mt-6 space-y-6">
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="comments"
-                        name="comments"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label
-                        htmlFor="comments"
-                        className="font-medium text-gray-900"
-                      >
-                        Comments
-                      </label>
-                      <p className="text-gray-500">
-                        Get notified when someones posts a comment on a posting.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="candidates"
-                        name="candidates"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label
-                        htmlFor="candidates"
-                        className="font-medium text-gray-900"
-                      >
-                        Candidates
-                      </label>
-                      <p className="text-gray-500">
-                        Get notified when a candidate applies for a job.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="offers"
-                        name="offers"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label
-                        htmlFor="offers"
-                        className="font-medium text-gray-900"
-                      >
-                        Offers
-                      </label>
-                      <p className="text-gray-500">
-                        Get notified when a candidate accepts or rejects an
-                        offer.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </fieldset>
-              <fieldset>
-                <legend className="text-sm font-semibold leading-6 text-gray-900">
-                  Push Notifications
-                </legend>
-                <p className="mt-1 text-sm leading-6 text-gray-600">
-                  These are delivered via SMS to your mobile phone.
-                </p>
-                <div className="mt-6 space-y-6">
-                  <div className="flex items-center gap-x-3">
-                    <input
-                      id="push-everything"
-                      name="push-notifications"
-                      type="radio"
-                      className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                    />
-                    <label
-                      htmlFor="push-everything"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Everything
-                    </label>
-                  </div>
-                  <div className="flex items-center gap-x-3">
-                    <input
-                      id="push-email"
-                      name="push-notifications"
-                      type="radio"
-                      className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                    />
-                    <label
-                      htmlFor="push-email"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Same as email
-                    </label>
-                  </div>
-                  <div className="flex items-center gap-x-3">
-                    <input
-                      id="push-nothing"
-                      name="push-notifications"
-                      type="radio"
-                      className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                    />
-                    <label
-                      htmlFor="push-nothing"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      No push notifications
-                    </label>
-                  </div>
-                </div>
-              </fieldset>
-            </div>
-          </div> */}
         </div>
 
         <div className="mt-6 flex items-center justify-end gap-x-6">

@@ -1,21 +1,22 @@
 // deze query moet meteen geladen worden en laat alle bedrijven laten zien die geconnect zijn
 
 import axios from "axios";
+// import { companyNameInput } from "@/app/ui/Form";
+import config from "./config";
 
-export async function getProducts(company_name, product_name) {
+export default async function getAllCompanies() {
   const apiUrl = "http://localhost:7200/repositories/repo_niels";
   const prefix = "<http://example.org/ontology#";
 
-  company_name = "CompanyA"; //dit moet dynamisch worden uit de functie
-  product_name = "Product1"; //moet ook dynamisch worden uit de functie
+  let all_companies_query = `PREFIX : <http://example.org/ontology#>
+  SELECT ?company ?companyName
+  WHERE { 
+    ?company a :Company ;
+             :hasName ?companyName .
+    FILTER (?company != :${config.my_company_name})
+  }`;
 
-  let new_query = `SELECT ?product ?data 
-                    WHERE {
-                        ${prefix}CompanyA> ${prefix}hasProduct> ?product.
-                        ?product ?value ?data
-                    }`;
-
-  let encoded_query = encodeURIComponent(new_query);
+  let encoded_query = encodeURIComponent(all_companies_query);
 
   const url = `${apiUrl}?query=${encoded_query}`;
 
