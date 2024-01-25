@@ -8,10 +8,6 @@ const headers = {
 
 export async function insertCompanies(my_company_name) {
   config.my_company_name = my_company_name;
-  console.log(
-    "----------------------------------------------- ",
-    config.my_company_name
-  );
 
   const company_name = my_company_name;
   const prefix = "<http://example.org/ontology";

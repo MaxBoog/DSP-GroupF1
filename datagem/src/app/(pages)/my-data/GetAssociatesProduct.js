@@ -1,9 +1,11 @@
 // deze query moet meteen geladen worden en laat alle bedrijven laten zien die geconnect zijn
 
 import axios from "axios";
+import config from "./config";
 
-const apiUrl = "http://localhost:7200/repositories/DataGemDeluxe";
-const my_name = "CompanyA";
+const apiUrl = "http://localhost:7200/repositories/repo_niels";
+const my_name = config.my_company_name;
+console.log(my_name, "___________________________");
 
 export async function findProduct() {
   let productQuery = `PREFIX : <http://example.org/ontology#>
@@ -33,7 +35,7 @@ export async function findProduct() {
 export async function findInfo() {
   let productQuery = `PREFIX : <http://example.org/ontology#>
 
-  SELECT ?product ?productName ?productInfo ?emissions ?energyConsumption ?renewableEnergyUsage ?materialEfficiency ?lifecycle ?company
+  SELECT ?product ?productName ?productInfo ?emissions ?energyConsumption ?renewableEnergyUsage ?materialEfficiency ?lifecycle ?company ?name
   WHERE {
 
 	:${my_name} :canAccessDataOf ?company.
@@ -43,6 +45,8 @@ export async function findInfo() {
              :hasName ?productName ;
              :hasProductInfo ?productInfo .
 #    
+  ?company :hasName ?name .
+
     ?productInfo :emissions ?emissions ;
                  :energyConsumption ?energyConsumption ;
                  :renewableEnergyUsage ?renewableEnergyUsage ;
@@ -76,6 +80,7 @@ export async function parseInfo(responseData) {
       renewableEnergyUsage: parseFloat(item.renewableEnergyUsage.value),
       materialEfficiency: item.materialEfficiency.value,
       lifecycle: item.lifecycle.value,
+      companyName: item.name.value,
     };
   });
 

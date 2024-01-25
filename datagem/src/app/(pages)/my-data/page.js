@@ -9,10 +9,16 @@ import Form from "@/app/ui/Form";
 
 import MyTable from "./table";
 import { getProducts } from "./query_product";
+import { findInfo, parseInfo } from "./GetAssociatesProduct";
+
+// const info = await findInfo();
 
 export default async function Page() {
   const products = await getProducts();
-  console.log(products);
+  const info = await findInfo();
+  const theParsedInfo = await parseInfo(info);
+
+  console.log(theParsedInfo);
   return (
     <>
       <section className="grid grid-cols-1 lg:grid-cols-4 px-4 gap-4 max-w-7xl mx-auto h-full w-ful text-gray-200">
@@ -33,7 +39,7 @@ export default async function Page() {
         {/* Input formulier */}
         <Form />
         <div className="col col-span-4">
-          <MyTable />
+          <MyTable data={theParsedInfo} />
         </div>
         <div className="col col-span-4">
           <hr />

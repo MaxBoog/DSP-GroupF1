@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Select from "react-select";
 import getAllCompanies from "../../my-data/get_all_companies";
-import AuthorizeButton from "@/app/ui/AuthorizeButton";
+import RequestButton from "@/app/ui/RequestButton";
 
 const all_companies_fetch = async () => {
   try {
@@ -99,9 +99,9 @@ export default function Page() {
                       />
                     </div>
                     <div className="col">
-                      <AuthorizeButton
+                      <RequestButton
                         selected_authorized={selectedOptions}
-                      ></AuthorizeButton>
+                      ></RequestButton>
                     </div>
                   </div>
                 </div>
