@@ -5,7 +5,7 @@ import { Button } from "flowbite-react";
 import Link from "next/link";
 import Form from "@/app/ui/Form";
 
-import { getCompanies } from "./insert_query";
+import { addProduct, getCompanies } from "./insert_query";
 import { findInfo, findProduct, parseInfo } from "./Queries/findProduct";
 import { updateInfo } from "./Queries/UpdateInfo";
 
@@ -27,11 +27,20 @@ export default async function Page() {
 
   const parsedData = await parseInfo(responseData)
 
-  
-  //  const update = await updateInfo()
-// Output the parsed information
   console.log(parsedData);
+  
+  const update = await updateInfo('http://example.org/ontology#FoamInsulationInfo', 'http://example.org/ontology#emissions', 100 )
 
+  const responseData2 = await findInfo();
+
+
+  const parsedData2 = await parseInfo(responseData2)
+
+// Output the parsed information
+  console.log(parsedData2);
+
+  const add = await addProduct("CompanyA", "Concrete4", 20, 60, 90, "blabla4", "dada4");
+  
 
   return (
     <>
