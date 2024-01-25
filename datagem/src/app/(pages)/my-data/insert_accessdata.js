@@ -3,7 +3,7 @@ import { companyNameInput } from "@/app/ui/Form";
 import config from "./config";
 
 export function getAccess(companies_can_access) {
-  console.log("-----", companies_can_access);
+  console.log("----", companies_can_access);
   const apiUrl = " http://localhost:7200/repositories/repo_niels/statements";
   //   const company_name = my_company_name;
   const prefix = "<http://example.org/ontology";
@@ -15,7 +15,7 @@ export function getAccess(companies_can_access) {
   for (let i = 0; i < companies_can_access.length; i++) {
     const x_access_y_query = `PREFIX : <http://example.org/ontology#> 
       INSERT DATA { 
-        :${config.my_company_name} :canAccessDataOf :${companies_can_access[i]} .
+        :${config.my_company_name} :canAccessDataOf :${companies_can_access[i].value} .
       }`;
     let encoded_query = encodeURIComponent(x_access_y_query);
     const url = `${apiUrl}?update=${encoded_query}`;
@@ -39,7 +39,7 @@ export async function giveAccess(companies_can_access) {
   for (let i = 0; i < companies_can_access.length; i++) {
     const y_gives_x_query = `PREFIX : <http://example.org/ontology#> 
     INSERT DATA { 
-      :${companies_can_access[i]} :canAccessDataOf :${config.my_company_name} .
+      :${companies_can_access[i].value} :canAccessDataOf :${config.my_company_name} .
     }`;
     let encoded_query = encodeURIComponent(y_gives_x_query);
     const url = `${apiUrl}?update=${encoded_query}`;

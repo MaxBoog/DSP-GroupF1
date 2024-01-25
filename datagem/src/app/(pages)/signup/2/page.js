@@ -78,7 +78,7 @@ export default function Page() {
             </h2>
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-10">
-              <div className="sm:col-span-6">
+              <div className="sm:col-span-10">
                 <label
                   htmlFor="company"
                   className="block text-sm font-medium leading-6 text-gray-200"
@@ -86,19 +86,24 @@ export default function Page() {
                   Company
                 </label>
                 <div className="mt-2">
-                  <Select
-                    isMulti
-                    name="companies"
-                    options={options}
-                    className="block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                    classNamePrefix="select"
-                    closeMenuOnSelect={false}
-                    onChange={handleSelectChange}
-                  />
-
-                  {/* <AuthorizeButton
-                    selected_authorized={selectedOptions}
-                  ></AuthorizeButton> */}
+                  <div className="grid grid-cols-2 max-w-7xl mx-auto">
+                    <div className="col">
+                      <Select
+                        isMulti
+                        name="companies"
+                        options={options}
+                        className="block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                        classNamePrefix="select"
+                        closeMenuOnSelect={false}
+                        onChange={handleSelectChange}
+                      />
+                    </div>
+                    <div className="col">
+                      <AuthorizeButton
+                        selected_authorized={selectedOptions}
+                      ></AuthorizeButton>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

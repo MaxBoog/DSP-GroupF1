@@ -1,28 +1,33 @@
 import React from "react";
 
 // Example JSON data
-const jsonData = [
-  {
-    productUri: "http://example.org/ontology#FiberglassInsulation",
-    productName: "Fiberglass Insulation",
-    productInfoUri: "http://example.org/ontology#FiberglassInsulationInfo",
-    emissions: 150,
-    energyConsumption: 600,
-    renewableEnergyUsage: 20,
-    materialEfficiency: "30% recycled glass",
-    lifecycle: "40 years, 70% recyclable",
-  },
-  {
-    productUri: "http://example.org/ontology#FoamInsulation",
-    productName: "Foam Insulation",
-    productInfoUri: "http://example.org/ontology#FoamInsulationInfo",
-    emissions: 100,
-    energyConsumption: 800,
-    renewableEnergyUsage: 15,
-    materialEfficiency: "Reduced VOC emissions",
-    lifecycle: "50 years, landfill disposal",
-  },
-];
+// const jsonData = [
+//   {
+//     productUri: "http://example.org/ontology#FiberglassInsulation",
+//     productName: "Fiberglass Insulation",
+//     productInfoUri: "http://example.org/ontology#FiberglassInsulationInfo",
+//     emissions: 150,
+//     energyConsumption: 600,
+//     renewableEnergyUsage: 20,
+//     materialEfficiency: "30% recycled glass",
+//     lifecycle: "40 years, 70% recyclable",
+//   },
+//   {
+//     productUri: "http://example.org/ontology#FoamInsulation",
+//     productName: "Foam Insulation",
+//     productInfoUri: "http://example.org/ontology#FoamInsulationInfo",
+//     emissions: 100,
+//     energyConsumption: 800,
+//     renewableEnergyUsage: 15,
+//     materialEfficiency: "Reduced VOC emissions",
+//     lifecycle: "50 years, landfill disposal",
+//   },
+// ];
+
+const info = await findInfo();
+const parsedInfo = parsedInfo(info);
+
+console.log(parsedInfo);
 
 const MyTable = () => {
   return (
@@ -40,7 +45,7 @@ const MyTable = () => {
         </tr>
       </thead>
       <tbody>
-        {jsonData.map((item, index) => (
+        {parsedInfo.map((item, index) => (
           <tr key={index}>
             {/* <td>{item.productUri}</td> */}
             <td>{item.productName}</td>
