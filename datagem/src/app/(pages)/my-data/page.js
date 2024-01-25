@@ -5,7 +5,7 @@ import { Button } from "flowbite-react";
 import Link from "next/link";
 import Form from "@/app/ui/Form";
 
-import { getCompanies } from "./insert_query";
+import { getCompanies } from "./query_direct";
 
 export default async function Page() {
   const companies = await getCompanies();
@@ -49,6 +49,15 @@ export default async function Page() {
           type="text"
           className="form-input px-4 py-3 rounded text-gray-900"
         />
+
+
+        <div>
+        <table class="tg" id="myTable">
+			    <tr>
+				  <th class="tg-lboi">Companies</th>
+			    </tr>
+		    </table>
+        </div>
 
         {/* <div className="col col-span-4">
           <hr />

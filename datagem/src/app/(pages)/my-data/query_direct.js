@@ -18,14 +18,24 @@ export async function getCompanies() {
     let encoded_query = encodeURIComponent(new_query)
     
     const url = `${apiUrl}?query=${encoded_query}`;
-    console.log(url);
-    console.log(encoded_query)
+
     const headers = {
         'Accept':'application/sparql-results+json', 
         'Content-Type':'application/sparql-results+json'
     };
 
     const response = await axios.get(url, {headers});
+
+    console.log(response.data.results.bindings.length)
+    let my_data = response.data.results.bindings
+    for (var i = 0; i < my_data.length; i++) {
+      var companyName = my_data[i].companyName.value;
+      
+      var table = document.getElementById("myTable");
+      var row = table.insertRow();
+      var cell1 = row.insertCell(0);
+      cell1.innerHTML = companyName ;
+    }
 
     return response.data.results.bindings;
 }

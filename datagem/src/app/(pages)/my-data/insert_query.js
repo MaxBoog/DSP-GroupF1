@@ -20,6 +20,8 @@ export async function getCompanies(my_company_name) {
   };
 
   const response = await axios.post(url, new_query, { headers });
+
+
   //console.log(response.data);  // Output the response data if needed
   // return response.data.results.bindings;
 }
