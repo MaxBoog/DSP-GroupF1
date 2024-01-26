@@ -29,36 +29,38 @@ const jsonData = [
 
 const MyTable = ({ data }) => {
   return (
-    <table className="table-fixed">
-      <thead>
-        <tr>
-          {/* <th>Product URI</th> */}
-          <th>Product Name</th>
-          {/* <th>Product Info URI</th> */}
-          <th>Emissions</th>
-          <th>Energy Consumption</th>
-          <th>Renewable Energy Usage</th>
-          <th>Material Efficiency</th>
-          <th>Lifecycle</th>
-          <th>Belongs To Company</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item) => (
+    <div className="relative overflow-x-auto">
+      <table className="table-fixed w-full text-sm text-left text-gray-100">
+        <thead className="">
           <tr>
-            {/* <td>{item.productUri}</td> */}
-            <td>{item.productName}</td>
-            {/* <td>{item.productInfoUri}</td> */}
-            <td>{item.emissions}</td>
-            <td>{item.energyConsumption}</td>
-            <td>{item.renewableEnergyUsage}</td>
-            <td>{item.materialEfficiency}</td>
-            <td>{item.lifecycle}</td>
-            <td>{item.companyName}</td>
+            {/* <th>Product URI</th> */}
+            <th>Product Name</th>
+            {/* <th>Product Info URI</th> */}
+            <th>Emissions</th>
+            <th>Energy Consumption</th>
+            <th>Renewable Energy Usage</th>
+            <th>Material Efficiency</th>
+            <th>Lifecycle</th>
+            <th>Belongs To Company</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data.map((item) => (
+            <tr key={item.productInfoUri}>
+              {/* <td>{item.productUri}</td> */}
+              <td>{item.productName}</td>
+              {/* <td>{item.productInfoUri}</td> */}
+              <td>{item.emissions}</td>
+              <td>{item.energyConsumption}</td>
+              <td>{item.renewableEnergyUsage}</td>
+              <td>{item.materialEfficiency}</td>
+              <td>{item.lifecycle}</td>
+              <td>{item.companyName}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
