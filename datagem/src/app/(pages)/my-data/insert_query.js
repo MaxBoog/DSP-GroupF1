@@ -55,7 +55,7 @@ export async function addProduct(
                     }
                     `;
 
-  console.log(new_query);
+  // console.log(new_query);
   let encoded_query = encodeURIComponent(new_query);
   const url = `${apiUrl}?update=${encoded_query}`;
 

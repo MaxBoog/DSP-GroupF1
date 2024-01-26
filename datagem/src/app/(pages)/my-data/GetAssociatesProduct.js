@@ -58,8 +58,8 @@ export async function findInfo() {
   let encoded_query = encodeURIComponent(productQuery);
 
   const url = `${apiUrl}?query=${encoded_query}`;
-  console.log(url);
-  console.log(encoded_query);
+  // console.log(url);
+  // console.log(encoded_query);
   const headers = {
     Accept: "application/sparql-results+json",
     "Content-Type": "application/sparql-results+json",
@@ -82,18 +82,19 @@ export async function myInfo() {
              :hasProductInfo ?productInfo .
 
 
-    ?productInfo :emissions ?emissions ;
-                 :energyConsumption ?energyConsumption ;
-                 :renewableEnergyUsage ?renewableEnergyUsage ;
-                 :materialEfficiency ?materialEfficiency ;
-                 :lifecycle ?lifecycle .
+    ?productInfo a :ProductInfo;
+                  :emissions ?emissions ;
+                  :energyConsumption ?energyConsumption ;
+                  :renewableEnergyUsage ?renewableEnergyUsage ;
+                  :materialEfficiency ?materialEfficiency ;
+                  :lifecycle ?lifecycle .
   }`;
 
   let encoded_query = encodeURIComponent(productQuery);
 
   const url = `${apiUrl}?query=${encoded_query}`;
-  console.log(url);
-  console.log(encoded_query);
+  // console.log(url);
+  // console.log(encoded_query);s
   const headers = {
     Accept: "application/sparql-results+json",
     "Content-Type": "application/sparql-results+json",

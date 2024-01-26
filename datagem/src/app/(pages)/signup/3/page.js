@@ -87,7 +87,7 @@ export default function Page() {
                 </label>
                 <div className="mt-2">
                   <div className="grid grid-cols-2 max-w-7xl mx-auto">
-                    <div className="col">
+                    <div className="co w-80">
                       <Select
                         isMulti
                         name="companies"

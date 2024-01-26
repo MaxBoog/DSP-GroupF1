@@ -87,7 +87,7 @@ export default function Page() {
                 </label>
                 <div className="mt-2">
                   <div className="grid grid-cols-2 max-w-7xl mx-auto">
-                    <div className="col">
+                    <div className="col w-96">
                       <Select
                         isMulti
                         name="companies"
@@ -116,12 +116,6 @@ export default function Page() {
             className="text-sm font-semibold leading-6 text-gray-200"
           >
             Back
-          </Link>
-          <Link
-            href="/signup/3"
-            className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Next step
           </Link>
         </div>
       </form>

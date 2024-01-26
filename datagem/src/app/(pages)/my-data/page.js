@@ -16,19 +16,18 @@ import {
 } from "./GetAssociatesProduct";
 
 import CompanyName from "@/app/ui/CompanyName";
+import AddProductForm from "@/app/ui/AddProductForm";
 
 // const info = await findInfo();
 
 export default async function Page() {
-  const products = await getProducts();
   const info = await findInfo();
   const theParsedInfo = await parseInfo(info);
 
-  const myProducts = await getProducts();
   const myInfoP = await myInfo();
   const myParsedInfo = await parseMyInfo(myInfoP);
 
-  console.log(theParsedInfo);
+  // console.log(theParsedInfo);
 
   // const current_company = loc alStorage.getItem();
   return (
@@ -75,6 +74,7 @@ export default async function Page() {
           className="form-input px-4 py-3 rounded text-gray-900"
         /> */}
       </section>
+      <AddProductForm />
     </>
   );
 }

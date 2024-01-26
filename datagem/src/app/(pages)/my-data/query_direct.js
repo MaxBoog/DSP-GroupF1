@@ -26,7 +26,7 @@ export async function getCompanies() {
 
   const response = await axios.get(url, { headers });
 
-  console.log(response.data.results.bindings.length);
+  // console.log(response.data.results.bindings.length);
   let my_data = response.data.results.bindings;
   for (var i = 0; i < my_data.length; i++) {
     var companyName = my_data[i].companyName.value;
