@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { insertCompanies } from "../(pages)/my-data/insert_query";
 import Link from "next/link";
 
-const Form = () => {
+const FormChangeProduct = () => {
   // State variable to store the input value
 
   const [companyNameInput, setcompanyNameInput] = useState("");
@@ -21,7 +21,6 @@ const Form = () => {
   const handleButtonClick = () => {
     // Update the companyNameInput variable with the current input value
     setcompanyNameInput(inputValue);
-    localStorage.setItem("local_storage_company_name", inputValue);
   };
 
   // useEffect to log the companyNameInput value when it changes
@@ -38,7 +37,7 @@ const Form = () => {
         onChange={handleInputChange}
         placeholder="Your company name..."
       />
-      <Link href="../signup/2">
+      <Link href="../my-data/page.js">
         <button
           className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mx-3"
           onClick={handleButtonClick}
@@ -50,4 +49,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default FormChangeProduct;

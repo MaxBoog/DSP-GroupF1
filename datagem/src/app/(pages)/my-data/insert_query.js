@@ -1,11 +1,16 @@
 import axios from "axios";
 import config from "./config";
 
-const apiUrl = process.env.INSERT_API;
-// const apiUrl = "http://localhost:7200/repositories/repo_niels/statements";
+// const apiUrl = process.env.INSERT_API;
+const apiUrl = "http://localhost:7200/repositories/repo_niels/statements";
 const headers = {
   "Content-Type": "application/sparql-update",
 };
+
+// Retrieve from local storage
+export function getCompanyName() {
+  return localStorage.getItem("myCompanyName") || null;
+}
 
 export async function insertCompanies(my_company_name) {
   config.my_company_name = my_company_name;

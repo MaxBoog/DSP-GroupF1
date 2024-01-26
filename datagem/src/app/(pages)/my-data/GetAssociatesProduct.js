@@ -3,8 +3,8 @@
 import axios from "axios";
 import config from "./config";
 
-const apiUrl = process.env.GET_API;
-// const apiUrl = "http://localhost:7200/repositories/repo_niels";
+// const apiUrl = process.env.GET_API;
+const apiUrl = "http://localhost:7200/repositories/repo_niels";
 const my_name = "CompanyA";
 // console.log(my_name, "___________________________");
 

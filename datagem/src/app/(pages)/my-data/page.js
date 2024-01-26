@@ -6,7 +6,7 @@ import { Button } from "flowbite-react";
 import Link from "next/link";
 import config from "./config";
 
-import MyTable from "./table";
+import { MyTable, MydataTable } from "./table";
 import { getProducts } from "./query_product";
 import {
   findInfo,
@@ -14,6 +14,8 @@ import {
   parseInfo,
   parseMyInfo,
 } from "./GetAssociatesProduct";
+
+import CompanyName from "@/app/ui/CompanyName";
 
 // const info = await findInfo();
 
@@ -26,9 +28,17 @@ export default async function Page() {
   const myInfoP = await myInfo();
   const myParsedInfo = await parseMyInfo(myInfoP);
 
-  console.log(myParsedInfo);
+  console.log(theParsedInfo);
+
+  // const current_company = loc alStorage.getItem();
   return (
     <>
+      <h1 className="bg-indigo-800 text-gray-100 p-5 font-bold">
+        Welcome,{" "}
+        <span className="text-pink-600">
+          <CompanyName />
+        </span>
+      </h1>
       <section className="grid grid-cols-1 lg:grid-cols-4 px-4 gap-4 max-w-7xl mx-auto h-full w-ful text-gray-200">
         <div className="col col-span-3">
           <h1>{config.my_company_name}</h1>
@@ -38,7 +48,7 @@ export default async function Page() {
           </p>
         </div>
         <div className="col-span-1">
-          <Link href="/my-data/edit-data">
+          <Link href="/my-data/add-data">
             <Button className=" p-1.5 justify-self-end bg-pink-700 my-3">
               Edit Data
             </Button>
@@ -48,6 +58,13 @@ export default async function Page() {
         {/* Input formulier */}
         <div className="col col-span-4">
           <MyTable data={theParsedInfo} />
+        </div>
+        <div className="col col-span-4">
+          <hr />
+        </div>
+        {/* Input formulier */}
+        <div className="col col-span-4">
+          <MydataTable data={myParsedInfo} />
         </div>
         <div className="col col-span-4">
           <hr />
