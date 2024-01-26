@@ -2,10 +2,9 @@
 
 import React from "react";
 
-import RequestCard from "@/app/ui/RequestCard";
 import { Button } from "flowbite-react";
 import Link from "next/link";
-import Form from "@/app/ui/Form";
+import config from "./config";
 
 import MyTable from "./table";
 import { getProducts } from "./query_product";
@@ -18,11 +17,12 @@ export default async function Page() {
   const info = await findInfo();
   const theParsedInfo = await parseInfo(info);
 
-  console.log(theParsedInfo);
+  console.log(info);
   return (
     <>
       <section className="grid grid-cols-1 lg:grid-cols-4 px-4 gap-4 max-w-7xl mx-auto h-full w-ful text-gray-200">
         <div className="col col-span-3">
+          <h1>{config.my_company_name}</h1>
           <p className="text-gray-600 p-3 my-3 bg-gray-100 rounded-md border-gray-50">
             Here you can view your data, edit it and publish it to all your
             approved linked associates.
@@ -37,7 +37,6 @@ export default async function Page() {
         </div>
 
         {/* Input formulier */}
-        <Form />
         <div className="col col-span-4">
           <MyTable data={theParsedInfo} />
         </div>

@@ -4,7 +4,7 @@ import axios from "axios";
 import config from "./config";
 
 const apiUrl = "http://localhost:7200/repositories/repo_niels";
-const my_name = config.my_company_name;
+const my_name = "CompanyA";
 console.log(my_name, "___________________________");
 
 export async function findProduct() {
@@ -39,12 +39,12 @@ export async function findInfo() {
   WHERE {
 
 	:${my_name} :canAccessDataOf ?company.
-#    
+    
     ?product a :Product ;
              :belongsToCompany ?company ;
              :hasName ?productName ;
              :hasProductInfo ?productInfo .
-#    
+  
   ?company :hasName ?name .
 
     ?productInfo :emissions ?emissions ;
