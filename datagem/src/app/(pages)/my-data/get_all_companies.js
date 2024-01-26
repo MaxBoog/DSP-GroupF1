@@ -5,7 +5,8 @@ import axios from "axios";
 import config from "./config";
 
 export default async function getAllCompanies() {
-  const apiUrl = "http://localhost:7200/repositories/repo_niels";
+  const apiUrl = process.env.GET_API;
+  // const apiUrl = "http://localhost:7200/repositories/repo_niels";
   const prefix = "<http://example.org/ontology#";
 
   let all_companies_query = `PREFIX : <http://example.org/ontology#>

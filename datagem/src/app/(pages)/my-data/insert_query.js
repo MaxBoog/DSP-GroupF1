@@ -1,7 +1,8 @@
 import axios from "axios";
 import config from "./config";
 
-const apiUrl = " http://localhost:7200/repositories/repo_niels/statements";
+const apiUrl = process.env.INSERT_API;
+// const apiUrl = "http://localhost:7200/repositories/repo_niels/statements";
 const headers = {
   "Content-Type": "application/sparql-update",
 };

@@ -1,7 +1,8 @@
 import axios from "axios";
 
 export async function getCompanies() {
-  const apiUrl = "http://localhost:7200/repositories/repo_niels";
+  const apiUrl = process.env.GET_API;
+  // const apiUrl = "http://localhost:7200/repositories/repo_niels";
 
   if (!input) {
     throw new Error("Ingredient not defined");

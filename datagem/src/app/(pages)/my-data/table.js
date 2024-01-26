@@ -30,32 +30,34 @@ const jsonData = [
 const MyTable = ({ data }) => {
   return (
     <div className="relative overflow-x-auto">
-      <table className="table-fixed w-full text-sm text-left text-gray-100">
-        <thead className="">
+      <table className="table-fixed w-full text-sm text-left text-gray-900 bg-white rounded p-4">
+        <thead className="uppercase text-sm">
           <tr>
             {/* <th>Product URI</th> */}
-            <th>Product Name</th>
+            <th className="p-3">Product Name</th>
             {/* <th>Product Info URI</th> */}
-            <th>Emissions</th>
-            <th>Energy Consumption</th>
-            <th>Renewable Energy Usage</th>
-            <th>Material Efficiency</th>
-            <th>Lifecycle</th>
-            <th>Belongs To Company</th>
+            <th className="p-3">Emissions</th>
+            <th className="p-3">Energy Consumption</th>
+            <th className="p-3">Renewable Energy Usage</th>
+            <th className="p-3">Material Efficiency</th>
+            <th className="p-3">Lifecycle</th>
+            <th className="p-3">Belongs To Company</th>
           </tr>
         </thead>
         <tbody>
           {data.map((item) => (
-            <tr key={item.productInfoUri}>
+            <tr key={item.productInfoUri} className="px-4">
               {/* <td>{item.productUri}</td> */}
-              <td>{item.productName}</td>
+              <td className="p-3">{item.productName}</td>
               {/* <td>{item.productInfoUri}</td> */}
-              <td>{item.emissions}</td>
-              <td>{item.energyConsumption}</td>
-              <td>{item.renewableEnergyUsage}</td>
-              <td>{item.materialEfficiency}</td>
-              <td>{item.lifecycle}</td>
-              <td>{item.companyName}</td>
+              <td className="p-3">{item.emissions}</td>
+              <td className="p-3">{item.energyConsumption}</td>
+              <td className="p-3">{item.renewableEnergyUsage}</td>
+              <td className="p-3">{item.materialEfficiency}</td>
+              <td className="p-3">{item.lifecycle}</td>
+              <td className="p-3 text-teal-900 font-bold">
+                {item.companyName}
+              </td>
             </tr>
           ))}
         </tbody>

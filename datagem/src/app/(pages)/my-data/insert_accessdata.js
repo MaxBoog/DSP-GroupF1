@@ -4,7 +4,8 @@ import config from "./config";
 
 export function getAccess(companies_can_access) {
   console.log("----", companies_can_access);
-  const apiUrl = " http://localhost:7200/repositories/repo_niels/statements";
+  const apiUrl = process.env.INSERT_API;
+  // const apiUrl = "http://localhost:7200/repositories/repo_niels/statements";
   //   const company_name = my_company_name;
   const prefix = "<http://example.org/ontology";
   const headers = {

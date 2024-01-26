@@ -3,9 +3,10 @@
 import axios from "axios";
 import config from "./config";
 
-const apiUrl = "http://localhost:7200/repositories/repo_niels";
+const apiUrl = process.env.GET_API;
+// const apiUrl = "http://localhost:7200/repositories/repo_niels";
 const my_name = "CompanyA";
-console.log(my_name, "___________________________");
+// console.log(my_name, "___________________________");
 
 export async function findProduct() {
   let productQuery = `PREFIX : <http://example.org/ontology#>
@@ -20,8 +21,8 @@ export async function findProduct() {
   let encoded_query = encodeURIComponent(productQuery);
 
   const url = `${apiUrl}?query=${encoded_query}`;
-  console.log(url);
-  console.log(encoded_query);
+  // console.log(url);
+  // console.log(encoded_query);
   const headers = {
     Accept: "application/sparql-results+json",
     "Content-Type": "application/sparql-results+json",
@@ -69,6 +70,40 @@ export async function findInfo() {
   return response.data.results.bindings;
 }
 
+export async function myInfo() {
+  let productQuery = `PREFIX : <http://example.org/ontology#>
+
+  SELECT ?product ?productName ?productInfo ?emissions ?energyConsumption ?renewableEnergyUsage ?materialEfficiency ?lifecycle ?company ?name
+  WHERE {
+
+    ?product a :Product ;
+             :belongsToCompany :${my_name} ;
+             :hasName ?productName ;
+             :hasProductInfo ?productInfo .
+
+
+    ?productInfo :emissions ?emissions ;
+                 :energyConsumption ?energyConsumption ;
+                 :renewableEnergyUsage ?renewableEnergyUsage ;
+                 :materialEfficiency ?materialEfficiency ;
+                 :lifecycle ?lifecycle .
+  }`;
+
+  let encoded_query = encodeURIComponent(productQuery);
+
+  const url = `${apiUrl}?query=${encoded_query}`;
+  console.log(url);
+  console.log(encoded_query);
+  const headers = {
+    Accept: "application/sparql-results+json",
+    "Content-Type": "application/sparql-results+json",
+  };
+
+  const response = await axios.get(url, { headers });
+
+  return response.data.results.bindings;
+}
+
 export async function parseInfo(responseData) {
   const parsedProducts = responseData.map((item) => {
     return {
@@ -81,6 +116,23 @@ export async function parseInfo(responseData) {
       materialEfficiency: item.materialEfficiency.value,
       lifecycle: item.lifecycle.value,
       companyName: item.name.value,
+    };
+  });
+
+  return parsedProducts;
+}
+
+export async function parseMyInfo(responseData) {
+  const parsedProducts = responseData.map((item) => {
+    return {
+      productUri: item.product.value,
+      productName: item.productName.value,
+      productInfoUri: item.productInfo.value,
+      emissions: parseFloat(item.emissions.value),
+      energyConsumption: parseFloat(item.energyConsumption.value),
+      renewableEnergyUsage: parseFloat(item.renewableEnergyUsage.value),
+      materialEfficiency: item.materialEfficiency.value,
+      lifecycle: item.lifecycle.value,
     };
   });
 

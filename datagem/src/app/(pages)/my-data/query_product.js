@@ -3,7 +3,8 @@
 import axios from "axios";
 
 export async function getProducts(company_name, product_name) {
-  const apiUrl = "http://localhost:7200/repositories/repo_niels";
+  const apiUrl = process.env.GET_API;
+  // const apiUrl = "http://localhost:7200/repositories/repo_niels";
   const prefix = "<http://example.org/ontology#";
 
   company_name = "CompanyA"; //dit moet dynamisch worden uit de functie
