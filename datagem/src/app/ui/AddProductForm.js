@@ -1,15 +1,15 @@
 "use client";
 
+
 import { useState, useEffect } from "react";
 import { addData } from "../(pages)/edit-data/queries/editData";
 import Link from "next/link";
 
-function refreshPage() {
-  window.location.reload();
-}
+
 
 const AddProductForm = () => {
   // State variable to store the input value
+  const [shouldAddData, setShouldAddData] = useState(false);
 
   const [productName, setProductName] = useState("");
   const [emissions, setEmissions] = useState("");
@@ -62,7 +62,11 @@ const AddProductForm = () => {
     setRenewableEnergy(trackRenewableEnergy);
     setMaterialEfficiency(trackMaterialEfficiency);
     setLifeCycle(trackLifeCycle);
-    // refreshPage();
+
+    setShouldAddData(true);
+    
+    window.location.reload();
+
   };
 
   // useEffect to log the companyNameInput value when it changes
@@ -70,15 +74,21 @@ const AddProductForm = () => {
   //     insertCompanies(companyNameInput);
   //   }, [companyNameInput]);
   useEffect(() => {
-    addData(
-      productName,
-      emissions,
-      energyConsumption,
-      renewableEnergy,
-      materialEfficiency,
-      lifeCycle
-    );
+    if (shouldAddData) {
+      addData(
+        productName,
+        emissions,
+        energyConsumption,
+        renewableEnergy,
+        materialEfficiency,
+        lifeCycle
+      );
+  
+      // Reset the flag
+      setShouldAddData(false);
+    }
   }, [
+    shouldAddData,
     productName,
     emissions,
     energyConsumption,
