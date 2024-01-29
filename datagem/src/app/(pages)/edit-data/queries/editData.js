@@ -42,7 +42,6 @@ export async function addData(
         :${my_name} :hasProduct :${product_name} .
     }
     `;
-  console.log(query);
   let encoded_query = encodeURIComponent(query);
   const url = `${apiUrl}?update=${encoded_query}`;
   const response = await axios.post(url, query, { headers });

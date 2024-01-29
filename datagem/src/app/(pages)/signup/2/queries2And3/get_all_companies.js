@@ -2,7 +2,7 @@
 
 import axios from "axios";
 // import { companyNameInput } from "@/app/ui/Form";
-import config from "./config";
+import config from "../../1/config";
 // import { companyName } from "@/app/ui/CompanyName";
 
 export default async function getAllCompanies() {

@@ -1,4 +1,4 @@
-import { giveAccess } from "../(pages)/my-data/insert_accessdata";
+import { giveAccess } from "../(pages)/signup/2/queries2And3/insert_accessdata";
 import Link from "next/link";
 
 const RequestButton = ({ selected_authorized }) => {

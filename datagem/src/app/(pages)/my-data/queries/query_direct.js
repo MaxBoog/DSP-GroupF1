@@ -2,7 +2,7 @@
 
 import axios from "axios";
 
-export async function getCompanies() {
+export async function getPartners() {
   // const apiUrl = process.env.GET_API;
   const apiUrl = "http://localhost:7200/repositories/repo_niels";
   const my_name = "CompanyA";

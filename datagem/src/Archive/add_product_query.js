@@ -1,6 +1,6 @@
 import axios from "axios";
 import { companyNameInput } from "@/app/ui/Form";
-import config from "./config";
+import config from "../signup/1/config";
 
 export async function getAccess(
   product_name,

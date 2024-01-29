@@ -4,16 +4,16 @@ import React from "react";
 
 import { Button } from "flowbite-react";
 import Link from "next/link";
-import config from "./config";
+import config from "../signup/1/config";
 
-import { MyTable, MydataTable } from "./table";
-import { getProducts } from "./query_product";
+import { MyTable, MydataTable } from "./queries/table";
+import { getProducts } from "./queries/query_product";
 import {
   findInfo,
   myInfo,
   parseInfo,
   parseMyInfo,
-} from "./GetAssociatesProduct";
+} from "./queries/GetAssociatesProduct";
 
 import CompanyName from "@/app/ui/CompanyName";
 import AddProductForm from "@/app/ui/AddProductForm";
@@ -21,6 +21,7 @@ import AddProductForm from "@/app/ui/AddProductForm";
 // const info = await findInfo();
 
 export default async function Page() {
+  console.log('------------------------', config.my_company_name)
   const info = await findInfo();
   const theParsedInfo = await parseInfo(info);
 
@@ -47,7 +48,7 @@ export default async function Page() {
           </p>
         </div>
         <div className="col-span-1">
-          <Link href="/my-data/add-data">
+          <Link href="../edit-data">
             <Button className=" p-1.5 justify-self-end bg-pink-700 my-3">
               Edit Data
             </Button>

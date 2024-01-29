@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { insertCompanies } from "../(pages)/my-data/insert_query";
+import { insertCompanies } from "../(pages)/signup/1/queries/insert_query";
 import Link from "next/link";
 
 const Form = () => {

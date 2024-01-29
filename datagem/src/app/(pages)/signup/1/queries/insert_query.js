@@ -1,5 +1,5 @@
 import axios from "axios";
-import config from "./config";
+import config from "../config";
 
 // const apiUrl = process.env.INSERT_API;
 const apiUrl = "http://localhost:7200/repositories/repo_niels/statements";

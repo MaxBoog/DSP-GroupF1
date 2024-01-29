@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { addData } from "../(pages)/my-data/add-data/editData";
+import { addData } from "../(pages)/edit-data/queries/editData";
 import Link from "next/link";
 
 function refreshPage() {

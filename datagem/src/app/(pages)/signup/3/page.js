@@ -5,7 +5,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Select from "react-select";
-import getAllCompanies from "../../my-data/get_all_companies";
+import getAllCompanies from "../2/queries2And3/get_all_companies";
 import AuthorizeButton from "@/app/ui/AuthorizeButton";
 
 const all_companies_fetch = async () => {

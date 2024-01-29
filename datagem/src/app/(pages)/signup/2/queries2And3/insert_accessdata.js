@@ -1,6 +1,6 @@
 import axios from "axios";
 import { companyNameInput } from "@/app/ui/Form";
-import config from "./config";
+import config from "../../1/config";
 
 export function getAccess(companies_can_access) {
   console.log("----", companies_can_access);
