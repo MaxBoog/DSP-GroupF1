@@ -2,24 +2,12 @@ import Image from "next/image";
 import DashboardCard from "@/app/ui/DashboardCard";
 import { Button } from "flowbite-react";
 import Link from "next/link";
-import { signOut } from "@/auth";
 
 export default function Page() {
   return (
     <section className="bg-indigo-900">
       <div className="grid grid-cols-1 lg:grid-cols-12 px-4 gap-0.5 max-w-7xl mx-auto h-full w-ful text-gray-200">
         <div className="col-span-6">
-          <form
-            action={async () => {
-              "use server";
-              await signOut();
-            }}
-          >
-            <button className="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
-              <PowerIcon className="w-6" />
-              <div className="hidden md:block">Sign Out</div>
-            </button>
-          </form>
           <h1 className="my-2 text-xl ">Your Network</h1>
           <Image src="/graph.png" height={500} width={500} alt="Your network" />
         </div>

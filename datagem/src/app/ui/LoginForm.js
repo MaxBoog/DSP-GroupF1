@@ -1,14 +1,50 @@
+// "use client";
+
+// import { signIn } from "next-auth/react";
+// import { useRouter } from "next/navigation";
+
+// export default function Form() {
+//   const router = useRouter();
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     const formData = new FormData(e.currentTarget);
+//     const response = await signIn("credentials", {
+//       email: formData.get("email"),
+//       password: formData.get("password"),
+//       redirect: false,
+//     });
+
+//     console.log({ response });
+//     if (!response?.error) {
+//       router.push("/");
+//       router.refresh();
+//     }
+//   };
+//   return (
+//     <form
+//       onSubmit={handleSubmit}
+//       className="flex flex-col gap-2 mx-auto max-w-md mt-10"
+//     >
+//       <input
+//         name="email"
+//         className="border border-black text-black"
+//         type="email"
+//       />
+//       <input
+//         name="password"
+//         className="border border-black  text-black"
+//         type="password"
+//       />
+//       <button type="submit">Login</button>
+//     </form>
+//   );
+// }
+
 "use client";
 
-import {
-  AtSymbolIcon,
-  KeyIcon,
-  ExclamationCircleIcon,
-} from "@heroicons/react/24/outline";
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
-import { Button } from "@/app/ui/button";
 import { useFormState, useFormStatus } from "react-dom";
 import { authenticate } from "@/app/lib/actions";
+import Link from "next/link";
 
 export default function LoginForm() {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
@@ -34,7 +70,6 @@ export default function LoginForm() {
                 placeholder="Enter your email address"
                 required
               />
-              <AtSymbolIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
           <div className="mt-4">
@@ -54,7 +89,6 @@ export default function LoginForm() {
                 required
                 minLength={6}
               />
-              <KeyIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
         </div>
@@ -66,7 +100,6 @@ export default function LoginForm() {
         >
           {errorMessage && (
             <>
-              <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
               <p className="text-sm text-red-500">{errorMessage}</p>
             </>
           )}
@@ -80,8 +113,10 @@ function LoginButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Button className="mt-4 w-full" aria-disabled={pending}>
-      Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
-    </Button>
+    <Link href="/dashboard">
+      <button className="mt-4 w-full" aria-disabled={pending}>
+        Log in
+      </button>
+    </Link>
   );
 }

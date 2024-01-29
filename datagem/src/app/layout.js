@@ -4,20 +4,23 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "@/app/ui/Nav";
 import Footer from "@/app/ui/Footer";
+import { getServerSession } from "next-auth";
+import Link from "next/link";
+import Logout from "./logout";
 // components
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "DataGem",
-  description: "Data to enrich your online business.",
-};
-
 export default function RootLayout({ children }) {
+  const session = getServerSession();
+
   return (
     <html lang="en">
       <body className={`${inter.className} bg-blue-700`}>
-        {/* <Nav /> */}
+        <nav>
+          {!!session && <Logout />}
+          {!session && <Link href="/login">Login</Link>}
+        </nav>
         {children}
         <Footer />
       </body>
