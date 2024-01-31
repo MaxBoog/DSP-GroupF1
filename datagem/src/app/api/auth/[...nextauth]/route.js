@@ -10,6 +10,7 @@ const handler = NextAuth({
   pages: {
     signIn: "/login",
   },
+
   providers: [
     CredentialsProvider({
       credentials: {
@@ -22,6 +23,11 @@ const handler = NextAuth({
         SELECT * FROM users WHERE email=${credentials?.email}`;
         const user = response.rows[0];
 
+        if (!user) {
+          // User not found
+          return null;
+        }
+
         const passwordCorrect = await compare(
           credentials?.password || "",
           user.password
@@ -32,6 +38,7 @@ const handler = NextAuth({
         if (passwordCorrect) {
           return {
             id: user.id,
+            name: user.name,
             email: user.email,
           };
         }

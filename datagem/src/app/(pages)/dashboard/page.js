@@ -2,13 +2,19 @@ import Image from "next/image";
 import DashboardCard from "@/app/ui/DashboardCard";
 import { Button } from "flowbite-react";
 import Link from "next/link";
+import { getServerSession } from "next-auth";
 
-export default function Page() {
+export default async function Page() {
+  const session = await getServerSession();
+
   return (
     <section className="bg-indigo-900">
       <div className="grid grid-cols-1 lg:grid-cols-12 px-4 gap-0.5 max-w-7xl mx-auto h-full w-ful text-gray-200">
         <div className="col-span-6">
-          <h1 className="my-2 text-xl ">Your Network</h1>
+          <h1 className="my-2 text-xl ">
+            You are logged in as{" "}
+            <span className="text-pink-600">{session.user.name}</span>
+          </h1>
           <Image src="/graph.png" height={500} width={500} alt="Your network" />
         </div>
 
