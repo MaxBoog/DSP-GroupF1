@@ -9,17 +9,23 @@ export default function Form() {
     const response = await fetch(`/api/auth/register`, {
       method: "POST",
       body: JSON.stringify({
+        company_name: formData.get("company_name"),
         email: formData.get("email"),
         password: formData.get("password"),
       }),
     });
-    console.log({ response });
+    // console.log({ response });
   };
   return (
     <form
       onSubmit={handleSubmit}
       className="flex flex-col gap-2 mx-auto max-w-md mt-10"
     >
+      <input
+        name="company_name"
+        className="border border-black text-black"
+        type="text"
+      />
       <input
         name="email"
         className="border border-black text-black"

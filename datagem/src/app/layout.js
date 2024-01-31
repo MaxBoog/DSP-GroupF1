@@ -11,8 +11,8 @@ import Logout from "./logout";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function RootLayout({ children }) {
-  const session = getServerSession();
+export default async function RootLayout({ children }) {
+  const session = await getServerSession();
 
   return (
     <html lang="en">

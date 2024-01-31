@@ -1,2 +1,0 @@
-
-GET http://localhost:7200/repositories/test?query=select * where { ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/ontology#Company> .} 
