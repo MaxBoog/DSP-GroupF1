@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Page() {
   return (
     <section className="flex items-center mx-auto rounded justify-center h-full max-w-7xl p-5 m-5 bg-indigo-900">
@@ -12,12 +14,12 @@ export default function Page() {
         <section>
           <p>
             In the era of information, data is the new currency. At Data Gem, we
-            understand the pivotal role data plays in the business world. That's
-            why we've created a platform that simplifies the way companies
-            manage, share, and utilize their data. Our web application is
-            designed to facilitate seamless data integration and collaboration
-            between businesses and their suppliers, ensuring that the right data
-            gets to the right people at the right time.
+            understand the pivotal role data plays in the business world.
+            That&apos;s why we&apos;ve created a platform that simplifies the
+            way companies manage, share, and utilize their data. Our web
+            application is designed to facilitate seamless data integration and
+            collaboration between businesses and their suppliers, ensuring that
+            the right data gets to the right people at the right time.
           </p>
         </section>
 
@@ -43,9 +45,9 @@ export default function Page() {
             </li>
             <li>
               <strong>User-Friendly Data Uploads</strong>: Our intuitive
-              interface makes uploading your data hassle-free. Whether you're
-              dealing with spreadsheets, databases, or custom file formats, Data
-              Gem handles it all.
+              interface makes uploading your data hassle-free. Whether
+              you&apos;re dealing with spreadsheets, databases, or custom file
+              formats, Data Gem handles it all.
             </li>
             <li>
               <strong>Advanced Data Security</strong>: We take the security of
@@ -112,8 +114,8 @@ export default function Page() {
             </li>
             <li>
               <strong>Compliance and Security</strong>: In a world where data
-              breaches are costly, Data Gem’s robust security measures give you
-              peace of mind, knowing your data is in safe hands.
+              breaches are costly, Data Gem&apos;s robust security measures give
+              you peace of mind, knowing your data is in safe hands.
             </li>
           </ul>
         </section>
@@ -122,19 +124,20 @@ export default function Page() {
           <h2>Getting Started with Data Gem</h2>
           <p>
             Joining Data Gem is a straightforward process. Sign up on our
-            website, follow the easy setup instructions, and you'll be ready to
-            start sharing and receiving data in no time. Our customer support
-            team is always available to assist you every step of the way.
+            website, follow the easy setup instructions, and you&apos;ll be
+            ready to start sharing and receiving data in no time. Our customer
+            support team is always available to assist you every step of the
+            way.
           </p>
         </section>
 
         <section>
           <h2>Our Commitment to Continuous Improvement</h2>
           <p>
-            At Data Gem, we're committed to evolving and improving our platform.
-            We regularly update our system with new features and enhancements
-            based on user feedback and industry trends. Your experience on Data
-            Gem gets better every day.
+            At Data Gem, we&apos;re committed to evolving and improving our
+            platform. We regularly update our system with new features and
+            enhancements based on user feedback and industry trends. Your
+            experience on Data Gem gets better every day.
           </p>
         </section>
 
@@ -142,9 +145,9 @@ export default function Page() {
           <h2>Join the Data Gem Community</h2>
           <p>
             Become a part of a growing community of businesses that are
-            transforming the way they handle data. With Data Gem, you're not
-            just adopting a tool; you're embracing a future where data sharing
-            is seamless, secure, and empowering.
+            transforming the way they handle data. With Data Gem, you&apos;re
+            not just adopting a tool; you&apos;re embracing a future where data
+            sharing is seamless, secure, and empowering.
           </p>
         </section>
 
@@ -152,8 +155,8 @@ export default function Page() {
           <h2>Contact Us</h2>
           <p>
             Have questions or need more information? Our team is here to help.
-            Contact us at [contact information], and we'll be happy to assist
-            you.
+            Contact us at <Link href="/contact">contact</Link>, and we&apos;ll
+            be happy to assist you.
           </p>
         </section>
       </div>

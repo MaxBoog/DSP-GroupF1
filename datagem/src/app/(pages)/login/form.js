@@ -55,7 +55,7 @@ export default function Form() {
         {loginError && <div className="text-red-500">{loginError}</div>}
         <Button type="submit">Login</Button>
         <p className="text-gray-100">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <Link href={"/signup"}>
             <button className="hover:text-gray-300"> Sign up!</button>
           </Link>
