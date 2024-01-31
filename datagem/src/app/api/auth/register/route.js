@@ -15,7 +15,11 @@ export async function POST(request) {
       VALUES (${company_name},${email}, ${hashedPassword})
     `;
   } catch (e) {
-    console.log({ e });
+    return NextResponse.json({
+      error: true,
+      code: e.code,
+      message: "Registration failed",
+    });
   }
 
   return NextResponse.json({ message: "success" });

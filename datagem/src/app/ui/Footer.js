@@ -17,7 +17,7 @@ export default function Component() {
       <FooterLinkGroup className="text-gray-200">
         <FooterLink href="/">Home</FooterLink>
         <FooterLink href="/login">Log In</FooterLink>
-        <FooterLink href="/signup/1">Sign Up</FooterLink>
+        <FooterLink href="/signup">Sign Up</FooterLink>
         <FooterLink href="#">Contact</FooterLink>
       </FooterLinkGroup>
     </Footer>

@@ -22,14 +22,14 @@ export default function Home() {
               }}
             />
           </div>
-          <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+          <div className="mx-auto max-w-2xl my-12">
             <div className="hidden sm:mb-8 sm:flex sm:justify-center">
               <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-100 ring-1 ring-white/20 hover:ring-white/30">
                 Learn more about how Linked-Data can support your business.{" "}
-                <a href="#" className="font-semibold text-gray-300">
+                <Link href="/read-more" className="font-semibold text-gray-300">
                   <span className="absolute inset-0" aria-hidden="true" />
                   Read more <span aria-hidden="true">&rarr;</span>
-                </a>
+                </Link>
               </div>
             </div>
             <div className="text-center">
@@ -44,8 +44,9 @@ export default function Home() {
               </h1>
               <p className="mt-6 text-lg leading-8 text-gray-200">
                 Data to enrich your online business. Harness the power of
-                Linked-Data and seamlessly import and share your ESG data with
-                suppliers and clients.
+                <span className="text-pink-500"> Linked-Data</span> and
+                seamlessly import and share your ESG data with suppliers and
+                clients.
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <Link

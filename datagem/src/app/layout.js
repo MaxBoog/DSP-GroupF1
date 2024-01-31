@@ -12,15 +12,15 @@ import Logout from "./logout";
 const inter = Inter({ subsets: ["latin"] });
 
 export default async function RootLayout({ children }) {
-  const session = await getServerSession();
+  // const session = await getServerSession();
 
   return (
     <html lang="en">
       <body className={`${inter.className} bg-blue-700`}>
-        <nav>
+        {/* <nav>
           {!!session && <Logout />}
           {!session && <Link href="/login">Login</Link>}
-        </nav>
+        </nav> */}
         {children}
         <Footer />
       </body>
