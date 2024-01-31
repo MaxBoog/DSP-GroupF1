@@ -21,12 +21,15 @@ import AddProductForm from "@/app/ui/AddProductForm";
 // const info = await findInfo();
 
 export default async function Page() {
-  console.log('------------------------', config.my_company_name)
   const info = await findInfo();
   const theParsedInfo = await parseInfo(info);
 
   const myInfoP = await myInfo();
   const myParsedInfo = await parseMyInfo(myInfoP);
+
+
+
+  // const [shouldLoadData, setShouldLoadData] = useState(false);
 
   // console.log(theParsedInfo);
 

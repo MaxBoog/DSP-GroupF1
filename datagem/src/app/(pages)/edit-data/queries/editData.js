@@ -47,43 +47,32 @@ export async function addData(
   const response = await axios.post(url, query, { headers });
 }
 
-export async function deleteData(
-  productName
-  //   emissions,
-  //   energyConsumption,
-  //   renewableEnergyUsage,
-  //   materialEfficiency,
-  //   lifecycle
-) {
+export async function deleteData(productName) {
   // const apiUrl = process.env.INSERT_API;
-  const query = `PREFIX : <http://example.org/ontology#>
-      DELETE DATA { 
-        :${my_name} :hasProduct :${productName}.
+  const my_productName = productName.value;
+  console.log('---------------')
+  console.log(my_productName)
+  console.log(my_name)
+  console.log('---------------')
+  const query = 
+  `PREFIX : <http://example.org/ontology#>
 
-        :${productName} a :Product ;
-           :belongsToCompany : ;
-           :hasName "${productName}" ;
-           :hasProductInfo ?productInfo .
-        ?productInfo :emissions ?emissions ;
-               :energyConsumption ?energyConsumption ;
-               :renewableEnergyUsage ?renewableEnergyUsage ;
-               :materialEfficiency ?materialEfficiency ;
-               :lifecycle ?lifecycle .
-      }
-      WHERE {
-        :${my_name} :hasProduct :${productName}
-
-        :${productNam} a :${productName} ;
-        :belongsToCompany :${my_name} ;
-        :hasName ?name ;
-        :hasProductInfo ?productInfo .
-     ?productInfo :emissions ?emissions ;
-            :energyConsumption ?energyConsumption ;
-            :renewableEnergyUsage ?renewableEnergyUsage ;
-            :materialEfficiency ?materialEfficiency ;
-            :lifecycle ?lifecycle .
-      }
-      `;
+  DELETE WHERE { 
+    :${my_name} :hasProduct :${my_productName}.
+    :${my_productName} a :Product ;
+               :belongsToCompany :${my_name} ;
+               :hasName ?name ;
+               :hasProductInfo ?productInfo.
+  
+    ?productInfo a :ProductInfo ;
+                 :emissions ?emissions ;
+                 :energyConsumption ?energyConsumption ;
+                 :renewableEnergyUsage ?renewableEnergyUsage ;
+                 :materialEfficiency ?materialEfficiency ;
+                 :lifecycle ?lifecycle.
+  }`;
+  
+  console.log(query);
   let encoded_query = encodeURIComponent(query);
   const url = `${apiUrl}?update=${encoded_query}`;
   const response = await axios.post(url, query, { headers });
@@ -91,18 +80,24 @@ export async function deleteData(
 
 export async function editData(productName, dataType, newValue) {
   // const apiUrl = process.env.INSERT_API;
+  const my_productName = productName.product;
+  const my_dataType = productName.info;
+  const my_newValue = newValue;
+
   const query = `PREFIX : <http://example.org/ontology#>
+                PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
   DELETE {
-    :${productName} :${dataType} ?oldvalue .
+    :${my_productName}Info :${my_dataType} ?oldvalue .
   } 
   INSERT {
-    :${productName} :${dataType} :${newValue} .
+    :${my_productName}Info :${my_dataType} "${my_newValue}"^^xsd:decimal .
   }
   WHERE {
-    :${productName} :${dataType} ?oldvalue .
+    :${my_productName}Info :${my_dataType} ?oldvalue .
   }
       `;
+  
   let encoded_query = encodeURIComponent(query);
   const url = `${apiUrl}?update=${encoded_query}`;
   const response = await axios.post(url, query, { headers });
