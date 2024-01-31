@@ -52,12 +52,19 @@ export default function Form() {
         name="company_name"
         className="border rounded text-black"
         type="text"
+        placeholder="Your company name"
       />
-      <input name="email" className="border rounded text-black" type="email" />
+      <input
+        name="email"
+        placeholder="Email address"
+        className="border rounded text-black"
+        type="email"
+      />
       <input
         name="password"
         className="border rounded text-black"
         type="password"
+        placeholder="Password"
       />
       {errorMessage && (
         <p className="text-red-500">{errorMessage}</p> // Display error message
