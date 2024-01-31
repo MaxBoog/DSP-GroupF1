@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Form() {
   const router = useRouter();
@@ -44,6 +45,9 @@ export default function Form() {
       />
       {loginError && <div className="text-red-500">{loginError}</div>}
       <button type="submit">Login</button>
+      <Link href={"/signup"}>
+        <button>Don't have an account? Sign up!</button>
+      </Link>
     </form>
   );
 }
