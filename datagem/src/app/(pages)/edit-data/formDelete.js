@@ -1,21 +1,20 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { deleteData } from "../(pages)/edit-data/queries/editData.js";
+import { deleteData } from "./queries/editData.js";
 import Link from "next/link";
 
-const DelForm = ({Product}) => {
-    console.log("Infunction___________________________, ",Product)
+const DelForm = ({ Product }) => {
+  console.log("Infunction___________________________, ", Product);
   // Function to handle the button click and store the input text in a variable
   const handleButtonClick = () => {
     // Update the companyNameInput variable with the current input value
     deleteData(Product);
     // localStorage.se  tItem("local_storage_company_name", inputValue);
     window.location.reload();
-
   };
 
-//   useEffect to log the companyNameInput value when it changes
+  //   useEffect to log the companyNameInput value when it changes
   useEffect(() => {
     deleteData(Product);
   }, [Product]);
@@ -30,7 +29,7 @@ const DelForm = ({Product}) => {
           Next Step
         </button>
       </Link>
-     </div>
+    </div>
   );
 };
 

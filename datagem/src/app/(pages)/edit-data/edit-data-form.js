@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { editData } from "../(pages)/edit-data/queries/editData.js";
+import { editData } from "./queries/editData.js";
 import Link from "next/link";
 
 const Form = (Product, Info) => {
@@ -23,7 +23,6 @@ const Form = (Product, Info) => {
     editData(Product, Info, companyNameInput);
     localStorage.setItem("local_storage_company_name", inputValue);
     window.location.reload();
-
   };
 
   // useEffect to log the companyNameInput value when it changes

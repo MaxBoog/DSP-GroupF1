@@ -16,7 +16,7 @@ export default function Page() {
       <div className="col col-span-4">
         <hr />
       </div>
-      <div className="col col-span-2">
+      <div className="col col-span-4 lg:col-span-2">
         <div className="grid grid-cols-subgrid gap-1 col-span-1">
           <h1 className="p-5 bg-teal-900 rounded-md">
             Companies requiring your approval
@@ -59,7 +59,7 @@ export default function Page() {
           </RequestCard>
         </div>
       </div>
-      <div className="col col-span-2">
+      <div className="col col-span-4 lg:col-span-2">
         <div className="grid grid-cols-subgrid gap-1 col-span-1">
           <h1 className="p-5 bg-teal-900 rounded-md">
             Authorized Associates &#40;These linked companies can view your data

@@ -1,11 +1,8 @@
 "use client";
 
-
 import { useState, useEffect } from "react";
-import { addData } from "../(pages)/edit-data/queries/editData";
+import { addData } from "../edit-data/queries/editData";
 import Link from "next/link";
-
-
 
 const AddProductForm = () => {
   // State variable to store the input value
@@ -64,9 +61,8 @@ const AddProductForm = () => {
     setLifeCycle(trackLifeCycle);
 
     setShouldAddData(true);
-    
-    window.location.reload();
 
+    window.location.reload();
   };
 
   // useEffect to log the companyNameInput value when it changes
@@ -83,7 +79,7 @@ const AddProductForm = () => {
         materialEfficiency,
         lifeCycle
       );
-  
+
       // Reset the flag
       setShouldAddData(false);
     }

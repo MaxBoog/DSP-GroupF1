@@ -4,8 +4,12 @@ import axios from "axios";
 // import { companyNameInput } from "@/app/ui/Form";
 // import config from "../../1/config";
 // import { companyName } from "@/app/ui/CompanyName";
+import { getServerSession } from "next-auth";
 
 export default async function getAllCompanies() {
+  const session = await getServerSession();
+  const company_name = session.user.name;
+  console.log(company_name);
   // const apiUrl = process.env.GET_API;
   const apiUrl = "http://localhost:7200/repositories/repo_niels";
   const prefix = "<http://example.org/ontology#";
@@ -15,7 +19,7 @@ export default async function getAllCompanies() {
   WHERE { 
     ?company a :Company ;
              :hasName ?companyName .
-    FILTER (?company != :${config.my_company_name})
+    FILTER (?company != :${company_name})
   }`;
 
   let encoded_query = encodeURIComponent(all_companies_query);

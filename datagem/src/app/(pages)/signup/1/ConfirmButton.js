@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { insertCompanies } from "../(pages)/signup/1/queries/insert_query";
+import { insertCompanies } from "./queries/insert_query";
 
 export default function ConfirmButton({ user }) {
   // console.log(user);

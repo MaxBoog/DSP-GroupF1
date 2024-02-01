@@ -16,7 +16,7 @@ import {
 } from "./queries/GetAssociatesProduct";
 
 import CompanyName from "@/app/ui/CompanyName";
-import AddProductForm from "@/app/ui/AddProductForm";
+import AddProductForm from "@/app/(pages)/my-data/AddProductForm";
 
 // const info = await findInfo();
 
@@ -26,8 +26,6 @@ export default async function Page() {
 
   const myInfoP = await myInfo();
   const myParsedInfo = await parseMyInfo(myInfoP);
-
-
 
   // const [shouldLoadData, setShouldLoadData] = useState(false);
 

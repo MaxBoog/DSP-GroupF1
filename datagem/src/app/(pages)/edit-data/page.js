@@ -5,11 +5,11 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Select from "react-select";
-import RequestButton from "@/app/ui/RequestButton";
-import { getProducts ,getProductInfo} from "./queries/products.js";
+import RequestButton from "@/app/(pages)/signup/2/RequestButton.js";
+import { getProducts, getProductInfo } from "./queries/products.js";
 import { editData } from "./queries/editData.js";
-import Form from "@/app/ui/edit-data-form.js"
-import DelForm from "@/app/ui/formDelete.js";
+import Form from "@/app/(pages)/edit-data/edit-data-form.js";
+import DelForm from "@/app/(pages)/edit-data/formDelete.js";
 
 const all_products_fetch = async () => {
   try {
@@ -50,13 +50,11 @@ export default function Page() {
     setSelectedProduct(auth_options || []);
   };
 
-
   const [selectedInfo, setSelectedInfo] = useState([]);
 
   const handleSelectChangeInfo = (auth_options) => {
     setSelectedInfo(auth_options || []);
   };
-
 
   const product = selectedProduct;
   const info = selectedInfo;
@@ -65,35 +63,34 @@ export default function Page() {
 
   const deleteProduct = (auth_options) => {
     setDeleteProduct(auth_options || []);
- 
   };
   const del = deletedProduct;
-  console.log(del.value, '_____________________________________________')
-
-  
+  console.log(del.value, "_____________________________________________");
 
   // const editData( ,selectedInfoType)
- 
+
   return (
     <>
       <form>
-      <div className="sm:col-span-6">
-        <div className="space-y-6">
-          <div className="border-b border-gray-900/10 pb-12">
-            <h1 className="text-base font-semibold leading-8 text-gray-200">
-              Edit your data
-            </h1>
+        <div className="sm:col-span-6">
+          <div className="space-y-6">
+            <div className="border-b border-gray-900/10 pb-12">
+              <h1 className="text-base font-semibold leading-8 text-gray-200">
+                Edit your data
+              </h1>
 
-            <div className="mt-2 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-6"></div>
-          </div>
+              <div className="mt-2 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-6"></div>
+            </div>
 
-          <div className="border-b border-gray-900/10 pb-12">
-            <h2 className="text-base font-semibold leading-7 text-gray-200">
-              Which product data would you like to edit?
-            </h2>
+            <div className="border-b border-gray-900/10 pb-12">
+              <h2 className="text-base font-semibold leading-7 text-gray-200">
+                Which product data would you like to edit?
+              </h2>
 
-            <div className="mt-1 grid grid-cols-2
-             gap-x-6 gap-y-8 sm:grid-cols-1">
+              <div
+                className="mt-1 grid grid-cols-2
+             gap-x-6 gap-y-8 sm:grid-cols-1"
+              >
                 <label
                   htmlFor="company"
                   className="block text-sm font-medium leading-6 text-gray-200"
@@ -102,7 +99,6 @@ export default function Page() {
                 </label>
                 <div className="mt-2">
                   <div className="grid grid-cols-2 gap-5 max-w-7xl mx-auto">
-
                     <div className="col w-">
                       <Select
                         // isMulti
@@ -124,12 +120,12 @@ export default function Page() {
                       />
                       {/* </div> */}
                       <div className="col">
-                      <hr />
-                      <Form  product={product.value} info={info.value} />
+                        <hr />
+                        <Form product={product.value} info={info.value} />
                       </div>
                     </div>
-                  <div className="col w-ful">
-                    <Select
+                    <div className="col w-ful">
+                      <Select
                         // isMulti
                         name="products"
                         options={product_options}
@@ -140,8 +136,8 @@ export default function Page() {
                       />
                       {/* </div> */}
                       <div className="col2">
-                      <hr />
-                      <DelForm Product = {del}/>
+                        <hr />
+                        <DelForm Product={del} />
                       </div>
                     </div>
                   </div>
@@ -151,10 +147,8 @@ export default function Page() {
           </div>
         </div>
 
-        
         {/* </div> */}
       </form>
     </>
   );
 }
-

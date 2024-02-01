@@ -1,10 +1,10 @@
 // imports
 
-import Form from "@/app/ui/Form";
+// import Form from "@/app/ui/Form";
 import Link from "next/link";
-import { insertCompanies } from "./queries/insert_query";
+// import { insertCompanies } from "./queries/insert_query";
 import { getServerSession } from "next-auth";
-import ConfirmButton from "@/app/ui/ConfirmButton";
+import ConfirmButton from "@/app/(pages)/signup/1/ConfirmButton";
 
 export default async function Page() {
   const session = await getServerSession();
