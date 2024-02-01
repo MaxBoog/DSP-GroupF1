@@ -1,5 +1,6 @@
 import axios from "axios";
-import config from "../config";
+// import config from "../config";
+// import { getServerSession } from "next-auth";
 
 // const apiUrl = process.env.INSERT_API;
 const apiUrl = "http://localhost:7200/repositories/repo_niels/statements";
@@ -8,56 +9,61 @@ const headers = {
 };
 
 // Retrieve from local storage
-export function getCompanyName() {
-  return localStorage.getItem("myCompanyName") || null;
-}
+// export function getCompanyName() {
+//   return localStorage.getItem("myCompanyName") || null;
+// }
 
-export async function insertCompanies(my_company_name) {
-  config.my_company_name = my_company_name;
-
-  const company_name = my_company_name;
+export async function insertCompanies(userName) {
+  // config.my_company_name = my_company_name;
+  // const session = await getServerSession();
+  // const company_name = userName.replace(/\s+/g, "%20");
+  const company_name_iri = userName.replace(/\s+/g, "%20");
+  const company_name_human_readable = userName;
+  // console.log(company_name);
   const prefix = "<http://example.org/ontology";
 
   //// company type ////
   const new_company_query = `PREFIX : <http://example.org/ontology#> 
   INSERT DATA { 
-    :${company_name} a :Company ;
-              :hasName "${company_name}" .
+    :${company_name_iri} a :Company ;
+              :hasName "${company_name_human_readable}"^^xsd:string .
   }`;
   let encoded_query = encodeURIComponent(new_company_query);
   const url = `${apiUrl}?update=${encoded_query}`;
   const response = await axios.post(url, new_company_query, { headers });
 }
 
-export async function addProduct(
-  productName,
-  emissions,
-  energyConsumption,
-  renewableEnergyUsage,
-  efficiency,
-  lifecycle
-) {
-  const new_query = `PREFIX : <http://example.org/ontology#> 
-                INSERT DATA{
-                  :${productName} a :Product ;
-                      :hasName "${productName}";
-                      :belongsToCompany: :${config.my_company_name} ;
-                      :hasProductInfo :${productName}Info .
-                  
-                      :${productName} a :${productName}Info;
-                      :emissions ${emissions} ;
-                      :energyConsumption  ${energyConsumption};
-                      :renewableEnergyUsage ${renewableEnergyUsage};
-                      :materialEfficiency "${efficiency}" ;
-                      :lifecycle "${lifecycle}".
-                  
-                    :${my_company_name} :hasProduct :${productName}.
-                    }
-                    `;
+// export async function addProduct(
+//   productName,
+//   emissions,
+//   energyConsumption,
+//   renewableEnergyUsage,
+//   efficiency,
+//   lifecycle
+// ) {
+//   const session = await getServerSession();
+//   const company_name = session.user.name;
+//   const new_query = `PREFIX : <http://example.org/ontology#>
+//                 INSERT DATA{
+//                   :${productName} a :Product ;
+//                       :hasName "${productName}";
+//                       :belongsToCompany: :${company_name} ;
+//                       :hasProductInfo :${productName}Info .
 
-  // console.log(new_query);
-  let encoded_query = encodeURIComponent(new_query);
-  const url = `${apiUrl}?update=${encoded_query}`;
+//                       :${productName} a :${productName}Info;
+//                       :emissions ${emissions} ;
+//                       :energyConsumption  ${energyConsumption};
+//                       :renewableEnergyUsage ${renewableEnergyUsage};
+//                       :materialEfficiency "${efficiency}" ;
+//                       :lifecycle "${lifecycle}".
 
-  const response = await axios.post(url, new_query, { headers });
-}
+//                     :${my_company_name} :hasProduct :${productName}.
+//                     }
+//                     `;
+
+//   // console.log(new_query);
+//   let encoded_query = encodeURIComponent(new_query);
+//   const url = `${apiUrl}?update=${encoded_query}`;
+
+//   const response = await axios.post(url, new_query, { headers });
+// }

@@ -41,6 +41,14 @@ export default async function Page() {
               </div>
             </div>
           </DashboardCard>
+          <DashboardCard>
+            <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              Manage my network
+            </h5>
+            <Link href="/signup/1">
+              <Button>Manage My Network</Button>
+            </Link>
+          </DashboardCard>
           <DashboardCard className={`w-full`}>
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               Reminder! Update your data.
