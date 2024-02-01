@@ -1,9 +1,9 @@
 import { getAccess } from "./queries2And3/insert_accessdata";
 import Link from "next/link";
 
-const RequestButton = ({ selected_authorized }) => {
-  const handleButtonClick = (selected) => {
-    getAccess(selected);
+const RequestButton = ({ selected_authorized, user }) => {
+  const handleButtonClick = () => {
+    getAccess(selected_authorized, user);
   };
 
   return (

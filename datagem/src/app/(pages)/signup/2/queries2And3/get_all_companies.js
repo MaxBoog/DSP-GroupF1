@@ -6,9 +6,8 @@ import axios from "axios";
 // import { companyName } from "@/app/ui/CompanyName";
 import { getServerSession } from "next-auth";
 
-export default async function getAllCompanies() {
-  const session = await getServerSession();
-  const company_name = encodeURIComponent(session.user.name);
+export default async function getAllCompanies({ user }) {
+  const company_name = encodeURIComponent(user);
 
   // console.log(company_name);
   // const apiUrl = process.env.GET_API;

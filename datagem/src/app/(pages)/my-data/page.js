@@ -4,7 +4,7 @@ import React from "react";
 
 import { Button } from "flowbite-react";
 import Link from "next/link";
-import config from "../signup/1/config";
+// import config from "../signup/1/config";
 
 import { MyTable, MydataTable } from "./queries/table";
 import { getProducts } from "./queries/query_product";
@@ -39,15 +39,10 @@ export default async function Page() {
   return (
     <>
       <h1 className="bg-indigo-800 text-gray-100 p-5 font-bold">
-        Welcome,{" "}
-        <span className="text-pink-600">
-          {/* <CompanyName /> */}
-          {userName}
-        </span>
+        Welcome, <span className="text-pink-600">{userName}</span>
       </h1>
       <section className="grid grid-cols-1 lg:grid-cols-4 px-4 gap-4 max-w-7xl mx-auto h-full w-ful text-gray-200">
         <div className="col col-span-3">
-          <h1>{config.my_company_name}</h1>
           <p className="text-gray-600 p-3 my-3 bg-gray-100 rounded-md border-gray-50">
             Here you can view your data, edit it and publish it to all your
             approved linked associates.
