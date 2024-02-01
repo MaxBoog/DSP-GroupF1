@@ -56,7 +56,7 @@ export default function SelectAuthorizedCompanies({ user }) {
           />
         </div>
         <div className="col col-span-4">
-          <AuthorizeButton user={userName} />
+          <AuthorizeButton selected_authorized={selectedOptions} user={userName} />
         </div>
       </div>
     </>

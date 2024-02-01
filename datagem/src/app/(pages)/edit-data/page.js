@@ -1,6 +1,6 @@
-"use client";
-
 // imports
+
+import { getServerSession } from "next-auth";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -27,7 +27,11 @@ const all_products_fetch = async () => {
 };
 
 const productInfoOptions = getProductInfo();
-export default function Page() {
+export default  function Page() {
+  const session =  getServerSession();
+  const user = session.user;
+  console.log(user, 'user');
+
   // get list of companies
   const [product_options, setOptions] = useState([]);
   useEffect(() => {

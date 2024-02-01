@@ -29,7 +29,6 @@ export default async function Page() {
   const theParsedInfo = await parseInfo(info);
 
   const myInfoP = await myInfo({ user });
-  console.log(myInfoP);
   const myParsedInfo = await parseMyInfo(myInfoP);
 
   // console.log(session, user, info, theParsedInfo, myInfoP, myParsedInfo);

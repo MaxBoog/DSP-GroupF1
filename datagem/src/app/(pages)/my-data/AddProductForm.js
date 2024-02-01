@@ -62,7 +62,7 @@ const AddProductForm = ({ user }) => {
 
     // setShouldAddData(true);
 
-    // window.location.reload();
+    window.location.reload();
     await addData(
       trackProductName,
       trackEmissions,

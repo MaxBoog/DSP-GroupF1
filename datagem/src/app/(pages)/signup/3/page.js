@@ -1,5 +1,6 @@
 // imports
 
+
 import SelectAuthorizedCompanies from "./SelectAuthorizedCompanies";
 import Link from "next/link";
 import { getServerSession } from "next-auth";
@@ -46,7 +47,7 @@ export default async function Page() {
                 <div className="mt-2">
                   <div className="grid grid-cols-1 max-w-7xl mx-auto">
                     <div className="col">
-                      <SelectAuthorizedCompanies user={user} />
+                      <SelectAuthorizedCompanies  user={user} />
                     </div>
                   </div>
                 </div>

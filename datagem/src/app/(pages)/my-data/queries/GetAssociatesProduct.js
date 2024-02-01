@@ -33,14 +33,14 @@ export async function findProduct() {
 }
 
 export async function findInfo(user) {
-  const company_name = encodeURIComponent(user);
-
+  // const company_name = encodeURIComponent(user);
+  console.log(user.user);
   let productQuery = `PREFIX : <http://example.org/ontology#>
 
   SELECT ?product ?productName ?productInfo ?emissions ?energyConsumption ?renewableEnergyUsage ?materialEfficiency ?lifecycle ?company ?name
   WHERE {
 
-	:${company_name} :canAccessDataOf ?company.
+	:${user.user} :canAccessDataOf ?company.
     
     ?product a :Product ;
              :belongsToCompany ?company ;
@@ -55,7 +55,7 @@ export async function findInfo(user) {
                  :materialEfficiency ?materialEfficiency ;
                  :lifecycle ?lifecycle .
   }`;
-
+  console.log(productQuery);
   let encoded_query = encodeURIComponent(productQuery);
 
   const url = `${apiUrl}?query=${encoded_query}`;
@@ -72,14 +72,13 @@ export async function findInfo(user) {
 }
 
 export async function myInfo(user) {
-  const company_name = encodeURIComponent(user);
   let productQuery = `PREFIX : <http://example.org/ontology#>
 
   SELECT ?product ?productName ?productInfo ?emissions ?energyConsumption ?renewableEnergyUsage ?materialEfficiency ?lifecycle ?company ?name
   WHERE {
 
     ?product a :Product ;
-             :belongsToCompany :${company_name} ;
+             :belongsToCompany :${user.user} ;
              :hasName ?productName ;
              :hasProductInfo ?productInfo .
 
