@@ -4,8 +4,7 @@ import { useState, useEffect } from "react";
 import { deleteData } from "./queries/editData.js";
 import Link from "next/link";
 
-const DelForm = ({ Product }) => {
-  console.log("Infunction___________________________, ", Product);
+const DelForm = ({ Product, user }) => {
   // Function to handle the button click and store the input text in a variable
   const handleButtonClick = () => {
     // Update the companyNameInput variable with the current input value
@@ -16,7 +15,7 @@ const DelForm = ({ Product }) => {
 
   //   useEffect to log the companyNameInput value when it changes
   useEffect(() => {
-    deleteData(Product);
+    deleteData(Product, user);
   }, [Product]);
 
   return (

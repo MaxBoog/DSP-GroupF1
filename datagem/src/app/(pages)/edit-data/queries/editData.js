@@ -23,7 +23,7 @@ export async function addData(
   const my_renewableEnergyUsage = renewableEnergyUsage;
   const my_materialEfficiency = materialEfficiency;
   const my_lifecycle = lifecycle;
-  const company_name = encodeURIComponent(user);
+  const company_name = user;
   console.log(company_name);
 
   // const apiUrl = process.env.INSERT_API;
@@ -50,19 +50,21 @@ export async function addData(
   const response = await axios.post(url, query, { headers });
 }
 
-export async function deleteData(productName) {
+export async function deleteData(productName, user) {
   // const apiUrl = process.env.INSERT_API;
   const my_productName = productName.value;
   // console.log("---------------");
   // console.log(my_productName);
   // console.log(my_name);
   // console.log("---------------");
+  console.log(user,"check_____________________________________________________________________");
+
   const query = `PREFIX : <http://example.org/ontology#>
 
   DELETE WHERE { 
-    :${my_name} :hasProduct :${my_productName}.
+    :${user} :hasProduct :${my_productName}.
     :${my_productName} a :Product ;
-               :belongsToCompany :${my_name} ;
+               :belongsToCompany :${user} ;
                :hasName ?name ;
                :hasProductInfo ?productInfo.
   
@@ -80,8 +82,9 @@ export async function deleteData(productName) {
   const response = await axios.post(url, query, { headers });
 }
 
-export async function editData(productName, dataType, newValue) {
+export async function editData(productName, newValue) {
   // const apiUrl = process.env.INSERT_API;
+  console.log('check editData')
   const my_productName = productName.product;
   const my_dataType = productName.info;
   const my_newValue = newValue;

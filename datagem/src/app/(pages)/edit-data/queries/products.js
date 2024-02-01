@@ -5,9 +5,9 @@ import axios from "axios";
 const apiUrl = "http://localhost:7200/repositories/repo_niels";
 const prefix = "<http://example.org/ontology#";
 
-const company_name = "CompanyA"; //dit moet dynamisch worden uit de functie
+// const company_name = "CompanyA"; //dit moet dynamisch worden uit de functie
 
-export async function getProducts() {
+export async function getProducts(user) {
   // const apiUrl = process.env.GET_API;
 
 
@@ -15,7 +15,7 @@ export async function getProducts() {
 
   SELECT ?products ?productName
   WHERE { 
-    :${company_name} :hasProduct ?products.
+    :${user} :hasProduct ?products.
       ?products :hasName ?productName
   }
   `;
