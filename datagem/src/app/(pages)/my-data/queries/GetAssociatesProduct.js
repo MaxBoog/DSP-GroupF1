@@ -1,12 +1,10 @@
 // deze query moet meteen geladen worden en laat alle bedrijven laten zien die geconnect zijn
 
 import axios from "axios";
-// import config from "../../signup/1/config";
-import { getServerSession } from "next-auth";
 
 // const apiUrl = process.env.GET_API;
 const apiUrl = "http://localhost:7200/repositories/repo_niels";
-const my_name = "CompanyA";
+// const my_name = "CompanyA";
 // console.log(my_name, "___________________________");
 
 export async function findProduct() {
@@ -34,13 +32,15 @@ export async function findProduct() {
   return response.data.results.bindings;
 }
 
-export async function findInfo() {
+export async function findInfo(user) {
+  const company_name = encodeURIComponent(user);
+
   let productQuery = `PREFIX : <http://example.org/ontology#>
 
   SELECT ?product ?productName ?productInfo ?emissions ?energyConsumption ?renewableEnergyUsage ?materialEfficiency ?lifecycle ?company ?name
   WHERE {
 
-	:${my_name} :canAccessDataOf ?company.
+	:${company_name} :canAccessDataOf ?company.
     
     ?product a :Product ;
              :belongsToCompany ?company ;
@@ -71,14 +71,15 @@ export async function findInfo() {
   return response.data.results.bindings;
 }
 
-export async function myInfo() {
+export async function myInfo(user) {
+  const company_name = encodeURIComponent(user);
   let productQuery = `PREFIX : <http://example.org/ontology#>
 
   SELECT ?product ?productName ?productInfo ?emissions ?energyConsumption ?renewableEnergyUsage ?materialEfficiency ?lifecycle ?company ?name
   WHERE {
 
     ?product a :Product ;
-             :belongsToCompany :${my_name} ;
+             :belongsToCompany :${company_name} ;
              :hasName ?productName ;
              :hasProductInfo ?productInfo .
 

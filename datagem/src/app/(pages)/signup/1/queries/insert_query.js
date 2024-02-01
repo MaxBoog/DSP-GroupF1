@@ -17,7 +17,7 @@ export async function insertCompanies(userName) {
   // config.my_company_name = my_company_name;
   // const session = await getServerSession();
   // const company_name = userName.replace(/\s+/g, "%20");
-  const company_name_iri = userName.replace(/\s+/g, "%20");
+  const company_name = encodeURIComponent(userName);
   // const company_name_iri = encodeURIComponent(userName);
   // console.log(company_name_iri);
   const company_name_human_readable = userName;
@@ -27,7 +27,7 @@ export async function insertCompanies(userName) {
   //// company type ////
   const new_company_query = `PREFIX : <http://example.org/ontology#> 
   INSERT DATA { 
-    :${company_name_iri} a :Company ;
+    :${company_name} a :Company ;
               :hasName "${company_name_human_readable}"^^xsd:string .
   }`;
   let encoded_query = encodeURIComponent(new_company_query);

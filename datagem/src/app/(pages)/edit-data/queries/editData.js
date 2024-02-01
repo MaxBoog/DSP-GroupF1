@@ -1,8 +1,8 @@
 import axios from "axios";
-import { companyNameInput } from "@/app/ui/Form";
+// import { companyNameInput } from "@/app/ui/Form";
 // import config from "./config";
 
-const my_name = "CompanyA";
+// const my_name = "CompanyA";
 const apiUrl = "http://localhost:7200/repositories/repo_niels/statements";
 const headers = {
   "Content-Type": "application/sparql-update",
@@ -14,7 +14,8 @@ export async function addData(
   energyConsumption,
   renewableEnergyUsage,
   materialEfficiency,
-  lifecycle
+  lifecycle,
+  user
 ) {
   const product_name = productName;
   const my_emissions = emissions;
@@ -22,6 +23,8 @@ export async function addData(
   const my_renewableEnergyUsage = renewableEnergyUsage;
   const my_materialEfficiency = materialEfficiency;
   const my_lifecycle = lifecycle;
+  const company_name = encodeURIComponent(user);
+  console.log(company_name);
 
   // const apiUrl = process.env.INSERT_API;
   const query = `PREFIX : <http://example.org/ontology#>
@@ -29,7 +32,7 @@ export async function addData(
       
         :${product_name} a :Product ;
             :hasName "${product_name}" ;
-            :belongsToCompany :${my_name} ;  # Assuming it belongs to CompanyX
+            :belongsToCompany :${company_name} ;  # Assuming it belongs to CompanyX
             :hasProductInfo :${product_name}Info .
     
         :${product_name}Info a :ProductInfo ;
@@ -39,7 +42,7 @@ export async function addData(
             :materialEfficiency "${my_materialEfficiency}" ;  # Example material efficiency
             :lifecycle "${my_lifecycle}" .  # Example lifecycle
 
-        :${my_name} :hasProduct :${product_name} .
+        :${company_name} :hasProduct :${product_name} .
     }
     `;
   let encoded_query = encodeURIComponent(query);
@@ -50,12 +53,11 @@ export async function addData(
 export async function deleteData(productName) {
   // const apiUrl = process.env.INSERT_API;
   const my_productName = productName.value;
-  console.log('---------------')
-  console.log(my_productName)
-  console.log(my_name)
-  console.log('---------------')
-  const query = 
-  `PREFIX : <http://example.org/ontology#>
+  // console.log("---------------");
+  // console.log(my_productName);
+  // console.log(my_name);
+  // console.log("---------------");
+  const query = `PREFIX : <http://example.org/ontology#>
 
   DELETE WHERE { 
     :${my_name} :hasProduct :${my_productName}.
@@ -71,7 +73,7 @@ export async function deleteData(productName) {
                  :materialEfficiency ?materialEfficiency ;
                  :lifecycle ?lifecycle.
   }`;
-  
+
   console.log(query);
   let encoded_query = encodeURIComponent(query);
   const url = `${apiUrl}?update=${encoded_query}`;
@@ -97,7 +99,7 @@ export async function editData(productName, dataType, newValue) {
     :${my_productName}Info :${my_dataType} ?oldvalue .
   }
       `;
-  
+
   let encoded_query = encodeURIComponent(query);
   const url = `${apiUrl}?update=${encoded_query}`;
   const response = await axios.post(url, query, { headers });

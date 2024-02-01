@@ -6,7 +6,7 @@ export default function MyDataLayout({
   return (
     <>
       <Nav />
-      <section>{children}</section>;
+      <section>{children}</section>
     </>
   );
 }

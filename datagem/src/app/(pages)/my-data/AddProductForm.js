@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { addData } from "../edit-data/queries/editData";
-import Link from "next/link";
+// import Link from "next/link";
 
-const AddProductForm = () => {
+const AddProductForm = ({ user }) => {
   // State variable to store the input value
   const [shouldAddData, setShouldAddData] = useState(false);
 
@@ -51,67 +51,67 @@ const AddProductForm = () => {
   //     // Update the companyNameInput variable with the current input value
   //     setcompanyNameInput(inputValue);
   //   };
-  const handleButtonClick = () => {
+  const handleButtonClick = async () => {
     // Update the companyNameInput variable with the current input value
-    setProductName(trackProductName);
-    setEmissions(trackEmissions);
-    setEnergyConsumption(trackEnergyConsumption);
-    setRenewableEnergy(trackRenewableEnergy);
-    setMaterialEfficiency(trackMaterialEfficiency);
-    setLifeCycle(trackLifeCycle);
+    // setProductName(trackProductName);
+    // setEmissions(trackEmissions);
+    // setEnergyConsumption(trackEnergyConsumption);
+    // setRenewableEnergy(trackRenewableEnergy);
+    // setMaterialEfficiency(trackMaterialEfficiency);
+    // setLifeCycle(trackLifeCycle);
 
-    setShouldAddData(true);
+    // setShouldAddData(true);
 
-    window.location.reload();
+    // window.location.reload();
+    await addData(
+      trackProductName,
+      trackEmissions,
+      trackEnergyConsumption,
+      trackRenewableEnergy,
+      trackMaterialEfficiency,
+      trackLifeCycle,
+      user
+    );
+
+    // Consider adding some form of feedback to the user here, like a message indicating success
+
+    // Optional: Clear form fields after submission
+    setTrackProductName("");
+    setTrackEmissions("");
+    SetTrackEnergyConsumption("");
+    setTrackRenewableEnergy("");
+    setTrackMaterialEfficiency("");
+    setTrackLifeCycle("");
   };
 
   // useEffect to log the companyNameInput value when it changes
   //   useEffect(() => {
   //     insertCompanies(companyNameInput);
   //   }, [companyNameInput]);
-  useEffect(() => {
-    if (shouldAddData) {
-      addData(
-        productName,
-        emissions,
-        energyConsumption,
-        renewableEnergy,
-        materialEfficiency,
-        lifeCycle
-      );
+  // useEffect(() => {
+  //   if (shouldAddData) {
+  //     addData(
+  //       productName,
+  //       emissions,
+  //       energyConsumption,
+  //       renewableEnergy,
+  //       materialEfficiency,
+  //       lifeCycle,
+  //       user
+  //     );
 
-      // Reset the flag
-      setShouldAddData(false);
-    }
-  }, [
-    shouldAddData,
-    productName,
-    emissions,
-    energyConsumption,
-    renewableEnergy,
-    materialEfficiency,
-    lifeCycle,
-  ]);
-
-  //   useEffect(() => {
-  //     insertEmissions(emissions);
-  //   }, [emissions]);
-
-  //   useEffect(() => {
-  //     insertEnergyConsumption(energyConsumption);
-  //   }, [energyConsumption]);
-
-  //   useEffect(() => {
-  //     insertRenewableEnergy(renewableEnergy);
-  //   }, [renewableEnergy]);
-
-  //   useEffect(() => {
-  //     insertMaterialEfficiency(materialEfficiency);
-  //   }, [materialEfficiency]);
-
-  //   useEffect(() => {
-  //     insertLifeCycle(lifeCycle);
-  //   }, [lifeCycle]);
+  //     // Reset the flag
+  //     setShouldAddData(false);
+  //   }
+  // }, [
+  //   shouldAddData,
+  //   productName,
+  //   emissions,
+  //   energyConsumption,
+  //   renewableEnergy,
+  //   materialEfficiency,
+  //   lifeCycle,
+  // ]);
 
   return (
     <div className="my-5 rounded">

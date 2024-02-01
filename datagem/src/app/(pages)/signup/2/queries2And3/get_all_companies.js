@@ -29,6 +29,7 @@ export default async function getAllCompanies({ user }) {
 
   // }`;
   console.log(all_companies_query);
+  console.log(company_name);
   let encoded_query = encodeURIComponent(all_companies_query);
 
   const url = `${apiUrl}?query=${encoded_query}`;
