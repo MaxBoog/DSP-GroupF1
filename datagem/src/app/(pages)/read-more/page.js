@@ -4,23 +4,23 @@ import Link from "next/link";
 export default function Page() {
   return (
     <>
-      <Nav />
+      {/* <Nav /> */}
       <section className="flex items-center mx-auto rounded justify-center h-full max-w-7xl p-5 m-5 bg-indigo-900">
         <div className="text-gray-100 m-5 grid grid-cols-12 gap-10">
-          {/* <div className="col col-span-3">
-          <Link href="/">
-            <button className="rounded-md bg-indigo-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mb-2">
-              Back to Home Page
-            </button>
-          </Link>
-        </div>
-        <div className="col col-span-3">
-          <Link href="/dashboard">
-            <button className="rounded-md bg-indigo-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mx-2 mb-2">
-              To My Dashboard
-            </button>
-          </Link>
-        </div> */}
+          <div className="col col-span-3">
+            <Link href="/">
+              <button className="rounded-md bg-indigo-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mb-2">
+                Back to Home Page
+              </button>
+            </Link>
+          </div>
+          <div className="col col-span-3">
+            <Link href="/dashboard">
+              <button className="rounded-md bg-indigo-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mx-2 mb-2">
+                To My Dashboard
+              </button>
+            </Link>
+          </div>
           <div className="col col-span-12">
             <h1 className="text-3xl font-bold">
               Data Gem: Revolutionizing Data Sharing in Business

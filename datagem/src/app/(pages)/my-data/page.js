@@ -15,12 +15,16 @@ import {
   parseMyInfo,
 } from "./queries/GetAssociatesProduct";
 
-import CompanyName from "@/app/ui/CompanyName";
+// import CompanyName from "@/app/ui/CompanyName";
 import AddProductForm from "@/app/(pages)/my-data/AddProductForm";
+import { getServerSession } from "next-auth";
 
 // const info = await findInfo();
 
 export default async function Page() {
+  const session = await getServerSession();
+  const userName = session.user.name;
+
   const info = await findInfo();
   const theParsedInfo = await parseInfo(info);
 
@@ -37,7 +41,8 @@ export default async function Page() {
       <h1 className="bg-indigo-800 text-gray-100 p-5 font-bold">
         Welcome,{" "}
         <span className="text-pink-600">
-          <CompanyName />
+          {/* <CompanyName /> */}
+          {userName}
         </span>
       </h1>
       <section className="grid grid-cols-1 lg:grid-cols-4 px-4 gap-4 max-w-7xl mx-auto h-full w-ful text-gray-200">

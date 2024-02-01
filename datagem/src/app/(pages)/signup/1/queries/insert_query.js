@@ -17,7 +17,9 @@ export async function insertCompanies(userName) {
   // config.my_company_name = my_company_name;
   // const session = await getServerSession();
   // const company_name = userName.replace(/\s+/g, "%20");
-  const company_name_iri = userName.replace(/\s+/g, "%20");
+  // const company_name_iri = userName.replace(/\s+/g, "%20");
+  const company_name_iri = encodeURIComponent(userName);
+  console.log(company_name_iri);
   const company_name_human_readable = userName;
   // console.log(company_name);
   const prefix = "<http://example.org/ontology";

@@ -1,7 +1,8 @@
 // deze query moet meteen geladen worden en laat alle bedrijven laten zien die geconnect zijn
 
 import axios from "axios";
-import config from "../../signup/1/config";
+// import config from "../../signup/1/config";
+import { getServerSession } from "next-auth";
 
 // const apiUrl = process.env.GET_API;
 const apiUrl = "http://localhost:7200/repositories/repo_niels";
