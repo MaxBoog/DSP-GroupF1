@@ -1,54 +1,12 @@
-"use client";
-
 // imports
 
-import { useEffect, useState } from "react";
+import SelectAuthorizedCompanies from "./SelectAuthorizedCompanies";
 import Link from "next/link";
-import Select from "react-select";
-import getAllCompanies from "../2/queries2And3/get_all_companies";
-import AuthorizeButton from "@/app/(pages)/signup/3/AuthorizeButton";
+import { getServerSession } from "next-auth";
 
-const all_companies_fetch = async () => {
-  try {
-    const all_companies = await getAllCompanies();
-    const company_options = all_companies.map((company) => ({
-      value: company.companyName.value,
-      label: company.companyName.value,
-    }));
-    return company_options;
-    // Use company_options here
-  } catch (error) {
-    console.error("Error fetching companies:", error);
-  }
-};
-
-export default function Page() {
-  // get list of companies
-  const [options, setOptions] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const companyOptions = await all_companies_fetch();
-        setOptions(companyOptions);
-      } catch (error) {
-        console.error("Error fetching companies:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  // authorize list of companies
-  const [selectedOptions, setSelectedOptions] = useState([]);
-
-  const handleSelectChange = (auth_options) => {
-    setSelectedOptions(auth_options || []);
-  };
-
-  const selectedValues = selectedOptions.map((option) => option.value);
-  console.log(selectedValues);
-  console.log(selectedOptions);
-
+export default async function Page() {
+  const session = await getServerSession();
+  const user = session.user.name;
   return (
     <>
       <div className="grid grid-cols-3 w-36 justify-between">
@@ -86,22 +44,9 @@ export default function Page() {
                   Company
                 </label>
                 <div className="mt-2">
-                  <div className="grid grid-cols-2 max-w-7xl mx-auto">
-                    <div className="co w-80">
-                      <Select
-                        isMulti
-                        name="companies"
-                        options={options}
-                        className="block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                        classNamePrefix="select"
-                        closeMenuOnSelect={false}
-                        onChange={handleSelectChange}
-                      />
-                    </div>
+                  <div className="grid grid-cols-1 max-w-7xl mx-auto">
                     <div className="col">
-                      <AuthorizeButton
-                        selected_authorized={selectedOptions}
-                      ></AuthorizeButton>
+                      <SelectAuthorizedCompanies user={user} />
                     </div>
                   </div>
                 </div>

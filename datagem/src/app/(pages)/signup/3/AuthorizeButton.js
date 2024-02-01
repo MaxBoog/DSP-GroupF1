@@ -1,9 +1,9 @@
 import { giveAccess } from "../2/queries2And3/insert_accessdata";
 import Link from "next/link";
 
-const RequestButton = ({ selected_authorized }) => {
-  const handleButtonClick = (selected) => {
-    giveAccess(selected);
+const AuthorizeButton = ({ selected_authorized, user }) => {
+  const handleButtonClick = () => {
+    giveAccess(selected_authorized, user);
   };
 
   return (
@@ -18,4 +18,4 @@ const RequestButton = ({ selected_authorized }) => {
   );
 };
 
-export default RequestButton;
+export default AuthorizeButton;
