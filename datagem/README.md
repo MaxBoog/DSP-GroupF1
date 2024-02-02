@@ -23,10 +23,19 @@ The database is now ready for use.
 Install [NodeJS](https://nodejs.org/en) if not already installed and follow the below steps to run the application locally.
 
 ```bash
+# change directory into the project
 cd datagem
 
+# install necessary dependencies
 npm install
 
+# run the development server
 npm run dev
 
 ```
+
+# Step 4: Running the development server
+
+NOTE: The development server compiles on run time and does not reflect a production ready application. The development server react slow when interacting with the application. Patience is key :D.
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
