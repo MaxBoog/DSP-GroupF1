@@ -34,13 +34,15 @@ export async function findProduct() {
   return response.data.results.bindings;
 }
 
-export async function findInfo() {
+export async function findInfo(user) {
+  const company_name = encodeURIComponent(user.user);
+  // console.log("-------", user.user);
   let productQuery = `PREFIX : <http://example.org/ontology#>
 
   SELECT ?product ?productName ?productInfo ?emissions ?energyConsumption ?renewableEnergyUsage ?materialEfficiency ?lifecycle ?company ?name
   WHERE {
 
-	:${my_name} :canAccessDataOf ?company.
+	:${company_name} :canAccessDataOf ?company.
     
     ?product a :Product ;
              :belongsToCompany ?company ;
@@ -71,14 +73,18 @@ export async function findInfo() {
   return response.data.results.bindings;
 }
 
-export async function myInfo() {
+export async function myInfo(user) {
+  const company_name = encodeURIComponent(user.user);
+  // console.log(user.user);
+
   let productQuery = `PREFIX : <http://example.org/ontology#>
+  
 
   SELECT ?product ?productName ?productInfo ?emissions ?energyConsumption ?renewableEnergyUsage ?materialEfficiency ?lifecycle ?company ?name
   WHERE {
 
     ?product a :Product ;
-             :belongsToCompany :${my_name} ;
+             :belongsToCompany :${company_name} ;
              :hasName ?productName ;
              :hasProductInfo ?productInfo .
 

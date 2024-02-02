@@ -4,32 +4,29 @@ import { useState, useEffect } from "react";
 import { deleteData } from "./queries/editData.js";
 import Link from "next/link";
 
-const DelForm = ({ Product }) => {
-  console.log("Infunction___________________________, ", Product);
+const DelForm = ({ Product, user }) => {
   // Function to handle the button click and store the input text in a variable
-  const handleButtonClick = () => {
+  const handleButtonClick = async () => {
     // Update the companyNameInput variable with the current input value
-    deleteData(Product);
+    await deleteData(Product, user);
     // localStorage.se  tItem("local_storage_company_name", inputValue);
     window.location.reload();
   };
 
   //   useEffect to log the companyNameInput value when it changes
-  useEffect(() => {
-    deleteData(Product);
-  }, [Product]);
+  // useEffect(() => {
+  //   deleteData(Product, user);
+  // }, [Product]);
 
   return (
-    <div className="my-5 rounded">
-      <Link href="edit-data">
-        <button
-          className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mx-3"
-          onClick={handleButtonClick}
-        >
-          Next Step
-        </button>
-      </Link>
-    </div>
+    <Link href="/my-data">
+      <button
+        className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 mt-3"
+        onClick={handleButtonClick}
+      >
+        Delete Product
+      </button>
+    </Link>
   );
 };
 

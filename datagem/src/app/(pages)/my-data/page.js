@@ -7,7 +7,7 @@ import Link from "next/link";
 // import config from "../signup/1/config";
 
 import { MyTable, MydataTable } from "./queries/table";
-import { getProducts } from "./queries/query_product";
+// import { getProducts } from "./queries/query_product";
 import {
   findInfo,
   myInfo,
@@ -23,23 +23,18 @@ import { getServerSession } from "next-auth";
 
 export default async function Page() {
   const session = await getServerSession();
-  const userName = session.user.name;
+  const user = session.user.name;
 
-  const info = await findInfo();
+  const info = await findInfo({ user });
   const theParsedInfo = await parseInfo(info);
 
-  const myInfoP = await myInfo();
+  const myInfoP = await myInfo({ user });
   const myParsedInfo = await parseMyInfo(myInfoP);
 
-  // const [shouldLoadData, setShouldLoadData] = useState(false);
-
-  // console.log(theParsedInfo);
-
-  // const current_company = loc alStorage.getItem();
   return (
     <>
       <h1 className="bg-indigo-800 text-gray-100 p-5 font-bold">
-        Welcome, <span className="text-pink-600">{userName}</span>
+        Welcome, <span className="text-pink-600">{user}</span>
       </h1>
       <section className="grid grid-cols-1 lg:grid-cols-4 px-4 gap-4 max-w-7xl mx-auto h-full w-ful text-gray-200">
         <div className="col col-span-3">
@@ -76,7 +71,7 @@ export default async function Page() {
           className="form-input px-4 py-3 rounded text-gray-900"
         /> */}
       </section>
-      <AddProductForm />
+      <AddProductForm user={user} />
     </>
   );
 }

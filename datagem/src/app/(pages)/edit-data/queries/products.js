@@ -5,11 +5,9 @@ import axios from "axios";
 const apiUrl = "http://localhost:7200/repositories/repo_niels";
 const prefix = "<http://example.org/ontology#";
 
-const company_name = "CompanyA"; //dit moet dynamisch worden uit de functie
-
-export async function getProducts() {
+export async function getProducts(user) {
   // const apiUrl = process.env.GET_API;
-
+  const company_name = encodeURIComponent(user);
 
   let new_query = `PREFIX : <http://example.org/ontology#>
 
@@ -31,10 +29,8 @@ export async function getProducts() {
 
   const response = await axios.get(url, { headers });
 
-
   return response.data.results.bindings;
 }
-
 
 export function getProductInfo() {
   const emissions = "emissions";
@@ -44,14 +40,12 @@ export function getProductInfo() {
   const lifecycle = "lifecycle";
 
   const productInfoOptions = [
-    {value: emissions, label: emissions},
-    {value: energyConsumption, label: energyConsumption},
-    {value: renewableEnergyUsage, label: renewableEnergyUsage},
-    {value: materialEfficiency, label: materialEfficiency},
-    {value: lifecycle, label: lifecycle}
-  ]
+    { value: emissions, label: emissions },
+    { value: energyConsumption, label: energyConsumption },
+    { value: renewableEnergyUsage, label: renewableEnergyUsage },
+    { value: materialEfficiency, label: materialEfficiency },
+    { value: lifecycle, label: lifecycle },
+  ];
 
   return productInfoOptions;
 }
-
-

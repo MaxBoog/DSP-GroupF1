@@ -4,10 +4,10 @@ import { useState, useEffect } from "react";
 import { editData } from "./queries/editData.js";
 import Link from "next/link";
 
-const Form = (Product, Info) => {
+const Form = (Product) => {
   // State variable to store the input value
 
-  const [companyNameInput, setcompanyNameInput] = useState("");
+  // const [companyNameInput, setcompanyNameInput] = useState("");
 
   // State variable to track the current input value
   const [inputValue, setInputValue] = useState("");
@@ -18,17 +18,17 @@ const Form = (Product, Info) => {
   };
 
   // Function to handle the button click and store the input text in a variable
-  const handleButtonClick = () => {
+  const handleButtonClick = async () => {
     // Update the companyNameInput variable with the current input value
-    editData(Product, Info, companyNameInput);
-    localStorage.setItem("local_storage_company_name", inputValue);
+    await editData(Product, inputValue);
+    // window.location.reload();
     window.location.reload();
   };
 
   // useEffect to log the companyNameInput value when it changes
-  useEffect(() => {
-    editData(Product, Info, companyNameInput);
-  }, [Product, Info, companyNameInput]);
+  // useEffect(() => {
+  //   editData(Product, inputValue);
+  // }, [Product, inputValue]);
 
   return (
     <div className="my-5 rounded">
@@ -39,12 +39,12 @@ const Form = (Product, Info) => {
         onChange={handleInputChange}
         placeholder="Your new value"
       />
-      <Link href="edit-data">
+      <Link href="/my-data">
         <button
-          className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mx-3"
+          className="rounded bg-indigo-600 px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mx-3"
           onClick={handleButtonClick}
         >
-          Next Step
+          Edit Product
         </button>
       </Link>
     </div>
