@@ -29,12 +29,19 @@ cd datagem
 # install necessary dependencies
 npm install
 
-# run the development server
-npm run dev
+# build an optimized production environment
+npm run build
+
+# run the production server
+npm run start
 
 ```
 
-# Step 4: Running the development server
+# Step 4 (optional): Running the development server
+
+```bash
+npm run dev
+```
 
 NOTE: The development server compiles on run time and does not reflect a production ready application. The development server react slow when interacting with the application. Patience is key :D.
 

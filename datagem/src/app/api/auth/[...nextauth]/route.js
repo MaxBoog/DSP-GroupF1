@@ -33,7 +33,7 @@ const handler = NextAuth({
           user.password
         );
 
-        console.log({ passwordCorrect });
+        // console.log({ passwordCorrect });
 
         if (passwordCorrect) {
           return {
