@@ -1,0 +1,150 @@
+@prefix agg: <http://jena.apache.org/ARQ/function/aggregate#> .
+@prefix : <http://example.org/ontology#> .
+@prefix sail: <http://www.openrdf.org/config/sail#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix geof: <http://www.opengis.net/def/function/geosparql/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix spif: <http://spinrdf.org/spif#> .
+@prefix path: <http://www.ontotext.com/path#> .
+@prefix array: <http://www.w3.org/2005/xpath-functions/array> .
+@prefix apf: <http://jena.apache.org/ARQ/property#> .
+@prefix rep: <http://www.openrdf.org/config/repository#> .
+@prefix map: <http://www.w3.org/2005/xpath-functions/map> .
+@prefix sr: <http://www.openrdf.org/config/repository/sail#> .
+@prefix rdf4j: <http://rdf4j.org/schema/rdf4j#> .
+@prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix gn: <http://www.geonames.org/ontology#> .
+@prefix afn: <http://jena.apache.org/ARQ/function#> .
+@prefix list: <http://jena.apache.org/ARQ/list#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ofn: <http://www.ontotext.com/sparql/functions/> .
+@prefix geoext: <http://rdf.useekm.com/ext#> .
+@prefix graphdb: <http://www.ontotext.com/config/graphdb#> .
+@prefix sesame: <http://www.openrdf.org/schema/sesame#> .
+@prefix math: <http://www.w3.org/2005/xpath-functions/math> .
+@prefix omgeo: <http://www.ontotext.com/owlim/geo#> .
+
+
+:Company a owl:Class .
+:Product a owl:Class .
+:ProductInfo a owl:Class .  # New class for product information
+
+
+:hasProductInfo a owl:ObjectProperty.  # Link a product to its product information
+
+:hasName a owl:DatatypeProperty;
+  rdf:range xsd:string .
+
+:hasProduct a owl:ObjectProperty .
+
+:belongsToCompany a owl:ObjectProperty .
+
+:canAccessDataOf a owl:ObjectProperty .
+
+:CompanyA a :Company;
+  :hasName "CompanyA".
+
+
+
+# Repeat the pattern for other companies and their products
+
+:CompanyB a :Company;
+  :hasName "CompanyB";
+  :hasProduct :WindowGlass, :FacadeGlass;
+  :canAccessDataOf :CompanyC .
+
+:WindowGlass a :Product;
+  :hasName "Window Glass";
+  :belongsToCompany :CompanyB;
+  :hasProductInfo :WindowGlassInfo .
+
+:FacadeGlass a :Product;
+  :hasName "Facade Glass";
+  :belongsToCompany :CompanyB;
+  :hasProductInfo :FacadeGlassInfo .
+
+
+:CompanyC a :Company;
+  :hasName "CompanyC";
+  :hasProduct :StructuralTimber, :Plywood;
+  :canAccessDataOf :CompanyA .
+
+:StructuralTimber a :Product;
+  :hasName "Structural Timber";
+  :belongsToCompany :CompanyC;
+  :hasProductInfo :StructuralTimberInfo .
+
+:Plywood a :Product;
+  :hasName "Plywood";
+  :belongsToCompany :CompanyC;
+  :hasProductInfo :PlywoodInfo .
+
+
+:CompanyD a :Company;
+  :hasName "CompanyD";
+  :canAccessDataOf :CompanyB, :CompanyC .
+
+
+:CompanyE a :Company;
+  :hasName "CompanyE";
+  :hasProduct :Timber .
+
+:Timber a :Product;
+  :hasName "Timber";
+  :belongsToCompany :CompanyE;
+  :hasProductInfo :TimberInfo .
+
+
+
+
+:WindowGlassInfo a :ProductInfo;
+  :emissions 250.0;
+  :energyConsumption 1200.0;
+  :renewableEnergyUsage 10.0;
+  :materialEfficiency "20% recycled glass";
+  :lifecycle "30 years, 90% recyclable" .
+
+:FacadeGlassInfo a :ProductInfo;
+  :emissions 300.0;
+  :energyConsumption 1500.0;
+  :renewableEnergyUsage 5.0;
+  :materialEfficiency "Low-emissivity coatings";
+  :lifecycle "35 years, 85% recyclable" .
+
+
+:StructuralTimberInfo a :ProductInfo;
+  :emissions 50.0;
+  :energyConsumption 250.0;
+  :renewableEnergyUsage 40.0;
+  :materialEfficiency "Certified sustainable forests";
+  :lifecycle "60 years, 100% recyclable" .
+
+:PlywoodInfo a :ProductInfo;
+  :emissions 80.0;
+  :energyConsumption 300.0;
+  :renewableEnergyUsage 30.0;
+  :materialEfficiency "25% recycled wood";
+  :lifecycle "20 years, 90% recyclable" .
+
+:ConcreteInfo a :ProductInfo;
+  :emissions 86.0;
+  :energyConsumption 430.0;
+  :renewableEnergyUsage 40.0;
+  :materialEfficiency "34% recycled wood";
+  :lifecycle "100 years, 90% recyclable" .
+
+:BrickInfo a :ProductInfo;
+  :emissions 50.0;
+  :energyConsumption 356.0;
+  :renewableEnergyUsage 20.0;
+  :materialEfficiency "40% recycled clay";
+  :lifecycle "50 years, 90% recyclable" .
+
+:TimberInfo a :ProductInfo;
+  :emissions 80.0;
+  :energyConsumption 299.0;
+  :renewableEnergyUsage 31.0;
+  :materialEfficiency "26% recycled wood";
+  :lifecycle "30 years, 95% recyclable" .
